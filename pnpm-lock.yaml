@@ -1,7 +1,15 @@
 lockfileVersion: 5.3
 
 specifiers:
+  echarts: ^5.3.2
   nuxt3: latest
+  swiper: ^8.1.0
+  vue-awesome-swiper: ^5.0.1
+
+dependencies:
+  echarts: registry.npmmirror.com/echarts/5.3.2
+  swiper: registry.npmmirror.com/swiper/8.1.0
+  vue-awesome-swiper: registry.npmmirror.com/vue-awesome-swiper/5.0.1_swiper@8.1.0
 
 devDependencies:
   nuxt3: registry.npmmirror.com/nuxt3/3.0.0-27491748.3186841
@@ -796,7 +804,7 @@ packages:
     dev: true
 
   registry.npmmirror.com/@types/estree/0.0.39:
-    resolution: {integrity: sha1-4Xfmme4bjCLSMXTKqnQiZEOJUJ8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/estree/download/@types/estree-0.0.39.tgz}
+    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/estree/-/estree-0.0.39.tgz}
     name: '@types/estree'
     version: 0.0.39
     dev: true
@@ -1963,6 +1971,14 @@ packages:
       entities: registry.npmmirror.com/entities/2.2.0
     dev: true
 
+  registry.npmmirror.com/dom7/4.0.4:
+    resolution: {integrity: sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dom7/-/dom7-4.0.4.tgz}
+    name: dom7
+    version: 4.0.4
+    dependencies:
+      ssr-window: registry.npmmirror.com/ssr-window/4.0.2
+    dev: false
+
   registry.npmmirror.com/domelementtype/2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/domelementtype/-/domelementtype-2.3.0.tgz}
     name: domelementtype
@@ -2009,6 +2025,15 @@ packages:
     name: duplexer
     version: 0.1.2
     dev: true
+
+  registry.npmmirror.com/echarts/5.3.2:
+    resolution: {integrity: sha512-LWCt7ohOKdJqyiBJ0OGBmE9szLdfA9sGcsMEi+GGoc6+Xo75C+BkcT/6NNGRHAWtnQl2fNow05AQjznpap28TQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.3.2.tgz}
+    name: echarts
+    version: 5.3.2
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
+      zrender: registry.npmmirror.com/zrender/5.3.1
+    dev: false
 
   registry.npmmirror.com/ee-first/1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz}
@@ -5210,6 +5235,12 @@ packages:
     version: 1.4.8
     dev: true
 
+  registry.npmmirror.com/ssr-window/4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ssr-window/-/ssr-window-4.0.2.tgz}
+    name: ssr-window
+    version: 4.0.2
+    dev: false
+
   registry.npmmirror.com/stable/0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stable/-/stable-0.1.8.tgz}
     name: stable
@@ -5400,6 +5431,17 @@ packages:
       stable: registry.npmmirror.com/stable/0.1.8
     dev: true
 
+  registry.npmmirror.com/swiper/8.1.0:
+    resolution: {integrity: sha512-Py2vuk7Nb3xlZMB2e201DQkjslTb6Uaju6wvr4BB7VjWrouSZegA0QjbxDVheJOsbKMUV092iDL3kymPBbuVzw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/swiper/-/swiper-8.1.0.tgz}
+    name: swiper
+    version: 8.1.0
+    engines: {node: '>= 4.7.0'}
+    requiresBuild: true
+    dependencies:
+      dom7: registry.npmmirror.com/dom7/4.0.4
+      ssr-window: registry.npmmirror.com/ssr-window/4.0.2
+    dev: false
+
   registry.npmmirror.com/table/6.8.0:
     resolution: {integrity: sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/table/-/table-6.8.0.tgz}
     name: table
@@ -5510,6 +5552,12 @@ packages:
     name: tr46
     version: 0.0.3
     dev: true
+
+  registry.npmmirror.com/tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
 
   registry.npmmirror.com/type-fest/0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-0.8.1.tgz}
@@ -5920,6 +5968,18 @@ packages:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
     dev: true
 
+  registry.npmmirror.com/vue-awesome-swiper/5.0.1_swiper@8.1.0:
+    resolution: {integrity: sha512-mWjFJzUqA4lG+DmsmibvMpoiBnl+IH2SSeiiQ3i5M0t1y9FknTxnGT0DsMb2YdJLgjYMEK3sYOWzqgLnZMH8Lg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-awesome-swiper/-/vue-awesome-swiper-5.0.1.tgz}
+    id: registry.npmmirror.com/vue-awesome-swiper/5.0.1
+    name: vue-awesome-swiper
+    version: 5.0.1
+    peerDependencies:
+      swiper: ^7.0.0  || ^8.0.0
+      vue: 3.x
+    dependencies:
+      swiper: registry.npmmirror.com/swiper/8.1.0
+    dev: false
+
   registry.npmmirror.com/vue-bundle-renderer/0.3.5:
     resolution: {integrity: sha512-LmiGFvlK3ZVtUklpJKVmVkJcmpkLEHKE9YbSR6WgFULIikw3pusXhX3vZPkL9tGcjzBERVrB9CQYDGdWApnEJQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-bundle-renderer/-/vue-bundle-renderer-0.3.5.tgz}
     name: vue-bundle-renderer
@@ -6137,3 +6197,11 @@ packages:
       compress-commons: registry.npmmirror.com/compress-commons/4.1.1
       readable-stream: registry.npmmirror.com/readable-stream/3.6.0
     dev: true
+
+  registry.npmmirror.com/zrender/5.3.1:
+    resolution: {integrity: sha512-7olqIjy0gWfznKr6vgfnGBk7y4UtdMvdwFmK92vVQsQeDPyzkHW1OlrLEKg6GHz1W5ePf0FeN1q2vkl/HFqhXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.3.1.tgz}
+    name: zrender
+    version: 5.3.1
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
+    dev: false

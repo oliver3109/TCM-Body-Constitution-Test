@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -7,5 +8,10 @@
   },
   "devDependencies": {
     "nuxt3": "latest"
+  },
+  "dependencies": {
+    "echarts": "^5.3.2",
+    "swiper": "^8.1.0",
+    "vue-awesome-swiper": "^5.0.1"
   }
 }
