@@ -18,6 +18,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
   background-color: #f5e617;
 }
 

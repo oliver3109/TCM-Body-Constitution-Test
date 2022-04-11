@@ -2,13 +2,21 @@
   <div class="page">
     <div v-if="result == ''">
       <div class="index" v-if="gender == null">
-        <div class="title">
-          <div class="main-title">Z式养生·中医体质自测</div>
-          <div class="sub-title">本测试来自《中医体质分类与判定》国家标准</div>
+        <div class="bg">
+          <div class="title">
+            <div class="main-title">Z式养生·中医体质自测</div>
+            <div class="sub-title">
+              本测试来自《中医体质分类与判定》国家标准
+            </div>
+          </div>
         </div>
-        <div class="sex">
-          <div class="btn male" @click="onSelectGender(0)">男</div>
-          <div class="btn female" @click="onSelectGender(1)">女</div>
+
+        <div class="sex-box">
+          <div class="title">请选择您的性别：</div>
+          <div class="sex">
+            <div class="btn male" @click="onSelectGender(0)">男</div>
+            <div class="btn female" @click="onSelectGender(1)">女</div>
+          </div>
         </div>
         <!-- 底部 -->
         <div class="xiaohongshu">
@@ -22,390 +30,40 @@
         </div>
       </div>
 
-      <swiper
-        v-if="gender != null"
-        class="swiper"
-        :modules="modules"
-        :scrollbar="{ draggable: true }"
-        navigation
-        :pagination="{ clickable: true, type: 'progressbar' }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-      >
-        <template v-slot:container-start>
-          <div class="top-title">
-            <div class="top-title__main-title">Z式养生·中医体质自测</div>
-            <div class="top-title__sub-title">
-              本测试来自《中医体质分类与判定》国家标准
-            </div>
+      <div class="content" v-if="gender != null">
+        <div class="top-title">
+          <div class="top-title__main-title">Z式养生·中医体质自测</div>
+          <div class="top-title__sub-title">
+            本测试来自《中医体质分类与判定》国家标准
           </div>
-        </template>
-        <template v-slot:container-end>
-          <div class="xiaohongshu">
-            <img
-              src="/xiaohongshu.png"
-              width="30"
-              height="30"
-              style="background: #fff; border-radius: 5px"
-            />
-            <div class="text">Z式养生</div>
-          </div>
-        </template>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li v-bind:quesid="item.id" v-if="index < 9" :key="item.id">
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li
-                  v-bind:quesid="item.id"
-                  v-if="index >= 9 && index < 18"
-                  :key="item.id"
-                >
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li
-                  v-bind:quesid="item.id"
-                  v-if="index >= 18 && index < 27"
-                  :key="item.id"
-                >
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li
-                  v-bind:quesid="item.id"
-                  v-if="index >= 27 && index < 36"
-                  :key="item.id"
-                >
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li
-                  v-bind:quesid="item.id"
-                  v-if="
-                    index >= 36 &&
-                    index < 46 &&
-                    (item.gender != null ? item.gender === gender : true)
-                  "
-                  :key="item.id"
-                >
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li
-                  v-bind:quesid="item.id"
-                  v-if="index >= 46 && index < 55"
-                  :key="item.id"
-                >
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-            </ol>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <ol class="quesitem">
-              <template v-for="(item, index) in queslistdata">
-                <li v-bind:quesid="item.id" v-if="index >= 55" :key="item.id">
-                  <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="1"
-                    />没有
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="2"
-                    />很少
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="3"
-                    />有时
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="4"
-                    />经常
-                  </label>
-                  <label class="radio-inline">
-                    <input
-                      type="radio"
-                      v-bind:name="item.answerno"
-                      value="5"
-                    />总是
-                  </label>
-                  <div class="quesblank"></div>
-                </li>
-              </template>
-              <div class="submit-btn" @click="onSubmit">查看结果</div>
-            </ol>
-          </div>
-        </swiper-slide>
-      </swiper>
+        </div>
+
+        <div class="info">请根据最近三个月的体验和感觉回答</div>
+        <ol class="quesitem">
+          <template v-for="(item, index) in queslistdata">
+            <li v-bind:quesid="item.id" v-if="true" :key="item.id">
+              <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
+              <label class="radio-inline">
+                <input type="radio" v-bind:name="item.answerno" value="1" />没有
+              </label>
+              <label class="radio-inline">
+                <input type="radio" v-bind:name="item.answerno" value="2" />很少
+              </label>
+              <label class="radio-inline">
+                <input type="radio" v-bind:name="item.answerno" value="3" />有时
+              </label>
+              <label class="radio-inline">
+                <input type="radio" v-bind:name="item.answerno" value="4" />经常
+              </label>
+              <label class="radio-inline">
+                <input type="radio" v-bind:name="item.answerno" value="5" />总是
+              </label>
+              <div class="quesblank"></div>
+            </li>
+          </template>
+        </ol>
+        <div class="submit-btn" @click="onSubmit">查看结果</div>
+      </div>
     </div>
 
     <div class="result" v-else>
@@ -417,7 +75,6 @@
         <div>兼有体质</div>
         <div>{{ resultlist2 }}</div>
       </div>
-      <!-- <div @click="initChart">1111</div> -->
       <div id="echart"></div>
 
       <div>
@@ -992,18 +649,10 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .page {
-  background-color: #f5e617;
   height: 100vh;
-}
-
-.swiper-button-next {
-  right: 5px;
-}
-.swiper-button-prev {
-  left: 5px;
-}
-.swiper-button-next {
-  right: 5px;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* 首页 */
@@ -1012,8 +661,20 @@ export default defineComponent({
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.index .bg {
+  width: 82%;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 9px rgb(101, 101, 101);
+}
+
+.index .bg:first-of-type {
+  margin-top: 200px;
 }
 
 .index .title {
@@ -1027,11 +688,20 @@ export default defineComponent({
 .index .title .sub-title {
   margin-top: 5px;
   font-size: 14px;
-  color: #32373a;
+  color: #8d8d8d;
+}
+
+.index .sex-box {
+  margin-top: 70px;
+}
+
+.index .sex-box .title {
+  font-size: 20px;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 .index .sex {
-  margin-top: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1083,31 +753,36 @@ export default defineComponent({
 
 /* page */
 
-.page .top-title {
+.content {
+  overflow-y: scroll;
+}
+
+.content .top-title {
   height: 60px;
   text-align: left;
-  padding-left: 45px;
+  padding-left: 18px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
 }
-.page .top-title__main-title {
+.content .top-title__main-title {
   font-size: 18px;
   font-weight: 500;
   color: #242421;
 }
-.page .top-title__sub-title {
+.content .top-title__sub-title {
   font-size: 12px;
   color: #32373a;
 }
 
-.content {
-  height: calc(100vh - 60px);
+.content .info {
+  position: sticky;
+  top: 0;
 }
 
 .content .quesitem {
-  padding: 1px 45px 0;
+  padding: 0 18px;
   display: flex;
   flex-direction: column;
   height: calc(100% - 60px);
