@@ -59,7 +59,7 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .check-btn {
-  background-color: #f2eea5;
+  background-color: #efeec9;
   color: #242421;
   display: flex;
   font-size: 16px;

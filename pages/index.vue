@@ -39,45 +39,31 @@
       </div>
 
       <div class="content" v-if="gender != null">
-        <div class="top-title">
-          <div class="top-title__main-title">
-            <img
-              src="/logo.png"
-              width="50"
-              height="50"
-              style="border-radius: 5px"
-            />
-            <div class="right">
-              <div class="top-title__main-title__text">中医体质自测</div>
-              <div class="top-title__sub-title">
-                本测试来自《中医体质分类与判定》国家标准
+        <div class="top">
+          <div class="top-title">
+            <div class="top-title__main-title">
+              <img
+                src="/logo.png"
+                width="50"
+                height="50"
+                style="border-radius: 5px"
+              />
+              <div class="right">
+                <div class="top-title__main-title__text">中医体质自测</div>
+                <div class="top-title__sub-title">
+                  本测试来自《中医体质分类与判定》国家标准
+                </div>
               </div>
             </div>
           </div>
+          <div class="info">‼️ 请根据最近三个月的体验和感觉回答</div>
         </div>
 
-        <div class="info">‼️ 请根据最近三个月的体验和感觉回答</div>
         <ol class="quesitem">
-          <template v-for="(item, index) in queslistdata">
-            <li v-bind:quesid="item.id" v-if="true" :key="item.id">
-              <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
+          <template v-for="(item, index) in questionDataList">
+            <li v-if="true" :key="item.id">
+              <p id="problem">{{ index + 1 }}. {{ item.questionText }}</p>
               <check-btn :index="index" @change="onQuestionResultChange" />
-              <!-- <label class="radio-inline">
-                <input type="radio" v-bind:name="item.answerno" value="1" />没有
-              </label>
-              <label class="radio-inline">
-                <input type="radio" v-bind:name="item.answerno" value="2" />很少
-              </label>
-              <label class="radio-inline">
-                <input type="radio" v-bind:name="item.answerno" value="3" />有时
-              </label>
-              <label class="radio-inline">
-                <input type="radio" v-bind:name="item.answerno" value="4" />经常
-              </label>
-              <label class="radio-inline">
-                <input type="radio" v-bind:name="item.answerno" value="5" />总是
-              </label> -->
-              <div class="quesblank"></div>
             </li>
           </template>
           <div class="submit-btn" @click="onSubmit">查看结果</div>
@@ -161,7 +147,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 // import "swiper/css/pagination";
 
-import { questionList, resultList } from "./data";
+import { QUESTION_LIST, resultList } from "./data";
 
 export default defineComponent({
   components: {
@@ -171,7 +157,7 @@ export default defineComponent({
   },
   data() {
     return {
-      queslistdata: questionList,
+      questionDataList: [],
       allresultlistdata: resultList,
       resultlistdata: [],
       scorelistdata: [],
@@ -200,54 +186,28 @@ export default defineComponent({
   },
   methods: {
     onQuestionResultChange({ index, value }) {
-      this.scorelistdata[index] = value;
-    },
-
-    getscorelist: function () {
-      var _list = document.getElementsByClassName("quesitem");
-      for (var index = 0; index < _list.length; index++) {
-        const queslist = _list.item(index);
-        var li_list = queslist.getElementsByTagName("li");
-        var len = li_list.length;
-        for (var i = 0; i < len; i++) {
-          var answervalue = 0;
-          for (var j = 0; j < 5; j++) {
-            var tmp = li_list[i].childNodes[1 + j].childNodes[0];
-            if (tmp.checked == true) {
-              answervalue = tmp.value;
-            }
-          }
-          if (parseInt(answervalue) == 0) {
-            this.scorelistdata.push(1);
-          } else {
-            if (this.queslistdata[i].is_decrease == true) {
-              answervalue = 6 - parseInt(answervalue);
-              this.scorelistdata.push(answervalue);
-            } else {
-              answervalue = parseInt(answervalue);
-              this.scorelistdata.push(answervalue);
-            }
-          }
-        }
+      const answervalue = value;
+      if (this.questionDataList[index].is_decrease == true) {
+        answervalue = 6 - value;
       }
-      console.log(this.scorelistdata);
+      this.scorelistdata[index] = answervalue;
     },
 
     pingheresult: function () {
-      var totalscore = 0;
+      let totalscore = 0;
       this.Ascorelistdata[0] = this.scorelistdata[0];
-      this.Ascorelistdata[1] = this.scorelistdata[6];
       this.Ascorelistdata[2] = this.scorelistdata[1];
       this.Ascorelistdata[3] = this.scorelistdata[2];
       this.Ascorelistdata[4] = this.scorelistdata[3];
       this.Ascorelistdata[5] = this.scorelistdata[4];
       this.Ascorelistdata[6] = this.scorelistdata[5];
+      this.Ascorelistdata[1] = this.scorelistdata[6];
       this.Ascorelistdata[7] = this.scorelistdata[47];
-      for (var i = 0; i < 8; i++) {
+      for (let i = 0; i < 8; i++) {
         totalscore = totalscore + this.Ascorelistdata[i];
       }
       console.log(this.Ascorelistdata);
-      var len = 8;
+      let len = 8;
       this.Ascore = [(totalscore - len) / (len * 4)] * 100;
       this.Ascore = this.Ascore.toFixed(1);
       console.log("pinghe score = " + this.Ascore);
@@ -647,6 +607,8 @@ export default defineComponent({
   setup() {
     // 性别
     const gender = ref(null);
+    // 题库
+    const questionDataList = ref(null);
 
     const onSwiper = (swiper) => {
       console.log(swiper);
@@ -657,6 +619,10 @@ export default defineComponent({
 
     const onSelectGender = (value) => {
       gender.value = value;
+
+      questionDataList.value = QUESTION_LIST.filter((i) =>
+        i.gender != null ? i.gender === value : true
+      );
     };
 
     return {
@@ -665,6 +631,7 @@ export default defineComponent({
       onSwiper,
       onSlideChange,
       onSelectGender,
+      questionDataList,
     };
   },
 });
@@ -686,6 +653,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #a7d168 0%, #f5e617 100%);
 }
 
 .index .bg:first-of-type {
@@ -773,6 +741,15 @@ export default defineComponent({
 
 .content {
   position: relative;
+  overflow-y: scroll;
+}
+
+.content .top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #a7d168;
 }
 
 .content .top-title {
@@ -811,7 +788,8 @@ export default defineComponent({
 
 .content .quesitem {
   padding: 0 15px;
-  position: fixed;
+  margin-top: 90px;
+  /* position: fixed; */
   top: 90px;
   bottom: 0;
   overflow-y: scroll;
@@ -819,7 +797,7 @@ export default defineComponent({
   flex-direction: column;
   height: calc(100% - 90px);
 }
-.content .quesitem #quesname {
+.content .quesitem #problem {
   font-size: 15px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -839,7 +817,7 @@ export default defineComponent({
 .submit-btn {
   width: 140px;
   height: 35px;
-  background-color: #a7d168;
+  background-color: #f5e617;
   border: 2px solid #32373a;
   border-radius: 8px;
   line-height: 35px;
