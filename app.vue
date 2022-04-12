@@ -22,7 +22,7 @@ body {
 
 html,
 body {
-  background: linear-gradient(135deg, #efe774 0%, #f5e617 100%);
+  background: linear-gradient(135deg, #a7d168 0%, #f5e617 100%);
 }
 
 li {

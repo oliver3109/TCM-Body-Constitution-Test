@@ -2,20 +2,22 @@
   <div class="page">
     <div v-if="result == ''">
       <div class="index" v-if="gender == null">
-        <div class="bg">
-          <div class="title">
-            <div class="main-title">Z式养生·中医体质自测</div>
-            <div class="sub-title">
-              本测试来自《中医体质分类与判定》国家标准
-            </div>
-          </div>
+        <div class="title">
+          <div class="main-title">Z式养生·中医体质自测</div>
+          <div class="sub-title">本测试来自《中医体质分类与判定》国家标准</div>
         </div>
 
         <div class="sex-box">
-          <div class="title">请选择您的性别：</div>
+          <div class="sex-box__title">请选择您的性别：</div>
           <div class="sex">
-            <div class="btn male" @click="onSelectGender(0)">男</div>
-            <div class="btn female" @click="onSelectGender(1)">女</div>
+            <div class="btn male" @click="onSelectGender(0)">
+              <img src="/male.svg" alt="" srcset="" />
+              <div>男</div>
+            </div>
+            <div class="btn female" @click="onSelectGender(1)">
+              <img src="/female.svg" alt="" srcset="" />
+              <div>女</div>
+            </div>
           </div>
         </div>
         <!-- 底部 -->
@@ -26,24 +28,41 @@
             height="40"
             style="background: #fff; border-radius: 5px"
           />
-          <div class="text">Z式养生</div>
+          <div class="text">X</div>
+          <img
+            src="/logo.png"
+            width="40"
+            height="40"
+            style="border-radius: 5px"
+          />
         </div>
       </div>
 
       <div class="content" v-if="gender != null">
         <div class="top-title">
-          <div class="top-title__main-title">Z式养生·中医体质自测</div>
-          <div class="top-title__sub-title">
-            本测试来自《中医体质分类与判定》国家标准
+          <div class="top-title__main-title">
+            <img
+              src="/logo.png"
+              width="50"
+              height="50"
+              style="border-radius: 5px"
+            />
+            <div class="right">
+              <div class="top-title__main-title__text">中医体质自测</div>
+              <div class="top-title__sub-title">
+                本测试来自《中医体质分类与判定》国家标准
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="info">请根据最近三个月的体验和感觉回答</div>
+        <div class="info">‼️ 请根据最近三个月的体验和感觉回答</div>
         <ol class="quesitem">
           <template v-for="(item, index) in queslistdata">
             <li v-bind:quesid="item.id" v-if="true" :key="item.id">
               <p id="quesname">{{ index + 1 }}. {{ item.fullname }}</p>
-              <label class="radio-inline">
+              <check-btn :index="index" @change="onQuestionResultChange" />
+              <!-- <label class="radio-inline">
                 <input type="radio" v-bind:name="item.answerno" value="1" />没有
               </label>
               <label class="radio-inline">
@@ -57,12 +76,12 @@
               </label>
               <label class="radio-inline">
                 <input type="radio" v-bind:name="item.answerno" value="5" />总是
-              </label>
+              </label> -->
               <div class="quesblank"></div>
             </li>
           </template>
+          <div class="submit-btn" @click="onSubmit">查看结果</div>
         </ol>
-        <div class="submit-btn" @click="onSubmit">查看结果</div>
       </div>
     </div>
 
@@ -180,6 +199,10 @@ export default defineComponent({
     };
   },
   methods: {
+    onQuestionResultChange({ index, value }) {
+      this.scorelistdata[index] = value;
+    },
+
     getscorelist: function () {
       var _list = document.getElementsByClassName("quesitem");
       for (var index = 0; index < _list.length; index++) {
@@ -393,7 +416,7 @@ export default defineComponent({
     },
 
     onSubmit: function (event) {
-      this.getscorelist();
+      // this.getscorelist();
 
       this.pingheresult();
       this.qixuresult();
@@ -661,16 +684,8 @@ export default defineComponent({
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-}
-
-.index .bg {
-  width: 82%;
-  background-color: #fff;
-  padding: 12px;
-  border-radius: 6px;
-  box-shadow: 4px 4px 9px rgb(101, 101, 101);
 }
 
 .index .bg:first-of-type {
@@ -678,6 +693,7 @@ export default defineComponent({
 }
 
 .index .title {
+  margin-top: -200px;
   text-align: center;
 }
 .index .title .main-title {
@@ -687,18 +703,18 @@ export default defineComponent({
 }
 .index .title .sub-title {
   margin-top: 5px;
-  font-size: 14px;
-  color: #8d8d8d;
+  font-size: 16px;
+  color: #7e7e7e;
 }
 
 .index .sex-box {
   margin-top: 70px;
 }
 
-.index .sex-box .title {
-  font-size: 20px;
+.index .sex-box .sex-box__title {
+  font-size: 18px;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .index .sex {
@@ -711,22 +727,24 @@ export default defineComponent({
   margin-right: 20px;
 }
 .index .sex .btn {
-  height: 80px;
+  height: 40px;
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #32373a;
   font-size: 16px;
   border-radius: 8px;
+  background-color: #f5e617;
+  border: 2px solid #32373a;
 }
 
 .index .sex .btn.male {
-  background-color: #00a6ff;
+  /* background-color: #00a6ff; */
 }
 
 .index .sex .btn.female {
-  background-color: #ff64bc;
+  /* background-color: #ff64bc; */
 }
 
 .xiaohongshu {
@@ -747,49 +765,64 @@ export default defineComponent({
   height: 24px;
   line-height: 24px;
   border-radius: 6px;
-  margin-left: 8px;
+  margin: 0 8px;
   font-weight: 500;
 }
 
 /* page */
 
 .content {
-  overflow-y: scroll;
+  position: relative;
 }
 
 .content .top-title {
   height: 60px;
   text-align: left;
-  padding-left: 18px;
+  padding-left: 15px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
 }
 .content .top-title__main-title {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: 500;
   color: #242421;
 }
+.content .right {
+  margin-left: 10px;
+}
+.content .top-title__main-title__text {
+  font-size: 20px;
+}
 .content .top-title__sub-title {
-  font-size: 12px;
+  font-size: 14px;
   color: #32373a;
 }
 
 .content .info {
-  position: sticky;
-  top: 0;
+  padding-left: 15px;
+  height: 30px;
+  font-size: 16px;
+  color: #32373a;
 }
 
 .content .quesitem {
-  padding: 0 18px;
+  padding: 0 15px;
+  position: fixed;
+  top: 90px;
+  bottom: 0;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 60px);
+  height: calc(100% - 90px);
 }
 .content .quesitem #quesname {
   font-size: 15px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .content .quesitem li {
@@ -806,13 +839,17 @@ export default defineComponent({
 .submit-btn {
   width: 140px;
   height: 35px;
-  background-color: #007aff;
+  background-color: #a7d168;
+  border: 2px solid #32373a;
+  border-radius: 8px;
   line-height: 35px;
   text-align: center;
   margin: 20px auto 0;
-  border-radius: 18px;
-  color: #fff;
+  border-radius: 12px;
+  color: #32373a;
   font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 30px;
 }
 
 /* 结果页面 */
