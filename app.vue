@@ -20,11 +20,6 @@ body {
   padding: 0;
 }
 
-html,
-body {
-  background: #a7d168 0%;
-}
-
 li {
   list-style-type: none;
 }

@@ -15,6 +15,7 @@
 export default defineComponent({
   props: {
     index: Number,
+    value: Number,
   },
   setup(prop, self) {
     const activeIndex = ref(null);
@@ -26,6 +27,7 @@ export default defineComponent({
         index: prop.index, // 传进来的索引
         value: item.value, // 分数
       });
+      self.emit("update:value", item.value);
     };
     return {
       activeIndex,

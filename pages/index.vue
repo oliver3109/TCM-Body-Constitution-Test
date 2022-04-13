@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div v-if="result == ''">
+    <div v-if="result.physical == ''">
       <div class="index" v-if="gender == null">
         <div class="title">
           <div class="main-title">Z式养生·中医体质自测</div>
@@ -59,11 +59,15 @@
           <div class="info">‼️ 请根据最近三个月的体验和感觉回答</div>
         </div>
 
-        <ol class="quesitem">
+        <ol class="quesitem" id="questionData">
           <template v-for="(item, index) in questionDataList">
-            <li v-if="true" :key="item.id">
+            <li v-if="true" :key="item.id" :id="`question_${index}`">
               <p id="problem">{{ index + 1 }}. {{ item.questionText }}</p>
-              <check-btn :index="index" @change="onQuestionResultChange" />
+              <check-btn
+                :index="index"
+                v-model:value="questionDataList[index].value"
+                @change="onChange(index)"
+              />
             </li>
           </template>
           <div class="submit-btn" @click="onSubmit">查看结果</div>
@@ -72,41 +76,44 @@
     </div>
 
     <div class="result" v-else>
+      <div class="top">
+        <div>Z式养生</div>
+        <div>养生绝不放松，走上人生巅峰</div>
+      </div>
       <div class="my">
         <div class="label">你的体质</div>
-        <div class="tizhi">{{ resultlist1 }}</div>
+        <div class="tizhi">{{ result.physical }}</div>
       </div>
       <div class="both">
         <div>兼有体质</div>
-        <div>{{ resultlist2 }}</div>
+        <div>{{ result.both }}</div>
       </div>
+
+      <div class="tender">
+        <div>倾向体质</div>
+        <div>{{ result.tenden }}</div>
+      </div>
+
       <div id="echart"></div>
 
-      <div>
+      <!-- <div>
         <h5 class="title">得分：</h5>
         <ol class="scorelist" id="scorelist">
-          <li class="list-group-item">平和质：{{ Ascore }}分</li>
-          <li class="list-group-item">气虚质：{{ Bscore }}分</li>
-          <li class="list-group-item">阳虚质：{{ Cscore }}分</li>
-          <li class="list-group-item">阴虚质：{{ Dscore }}分</li>
-          <li class="list-group-item">痰湿质：{{ Escore }}分</li>
-          <li class="list-group-item">湿热质：{{ Fscore }}分</li>
-          <li class="list-group-item">血瘀质：{{ Gscore }}分</li>
-          <li class="list-group-item">气郁质：{{ Hscore }}分</li>
-          <li class="list-group-item">特禀质：{{ Iscore }}分</li>
+          <li class="list-group-item">平和质：{{ PingheScore }}分</li>
+          <li class="list-group-item">气虚质：{{ QiXuScore }}分</li>
+          <li class="list-group-item">阳虚质：{{ YangXuScore }}分</li>
+          <li class="list-group-item">阴虚质：{{ YingXuScore }}分</li>
+          <li class="list-group-item">痰湿质：{{ TanShiScore }}分</li>
+          <li class="list-group-item">湿热质：{{ ShiReScore }}分</li>
+          <li class="list-group-item">血瘀质：{{ XueYuScore }}分</li>
+          <li class="list-group-item">气郁质：{{ QiYuScore }}分</li>
+          <li class="list-group-item">特禀质：{{ TeBingScore }}分</li>
         </ol>
-      </div>
-      <div class="blank"></div>
-      <h5 class="title">判定结果：</h5>
-      <h5 class="title">{{ result }}</h5>
-      <div class="blank"></div>
+      </div> -->
+
       <h5 class="title">结果解析：</h5>
       <ol class="resultlist" id="resultlist">
-        <li
-          v-bind:quesid="item.id"
-          v-for="item in resultlistdata"
-          :key="item.id"
-        >
+        <li v-for="item in result.healthGuide" :key="item.id">
           <h5 class="totaltitle">{{ item.name }}</h5>
           <p><strong>常见表现：</strong>{{ item.changjianbiaoxian }}</p>
           <p><strong>形体特征：</strong>{{ item.xingtitezheng }}</p>
@@ -121,33 +128,20 @@
           </ul>
         </li>
       </ol>
-
-      <!-- 底部 -->
-      <div class="xiaohongshu">
-        <img
-          src="/xiaohongshu.png"
-          width="30"
-          height="30"
-          style="background: #fff; border-radius: 5px"
-        />
-        <div class="text">Z式养生</div>
-      </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import * as echarts from "echarts";
 import { Pagination, Navigation } from "Swiper";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-
-// import { NButton } from "naive-ui";
 
 import "swiper/css";
 import "swiper/css/navigation";
 // import "swiper/css/pagination";
 
-import { QUESTION_LIST, resultList } from "./data";
+import { QUESTION_LIST, RESULT_LIST, TYPE_PHYSIQUE_MAP } from "./data";
 
 export default defineComponent({
   components: {
@@ -158,383 +152,230 @@ export default defineComponent({
   data() {
     return {
       questionDataList: [],
-      allresultlistdata: resultList,
-      resultlistdata: [],
-      scorelistdata: [],
-      Ascorelistdata: [0, 0, 0, 0, 0, 0, 0, 0],
-      Ascore: 0,
-      Bscorelistdata: [0, 0, 0, 0, 0, 0, 0, 0],
-      Bscore: 0,
-      Cscorelistdata: [0, 0, 0, 0, 0, 0, 0],
-      Cscore: 0,
-      Dscorelistdata: [0, 0, 0, 0, 0, 0, 0, 0],
-      Dscore: 0,
-      Escorelistdata: [0, 0, 0, 0, 0, 0, 0, 0],
-      Escore: 0,
-      Fscorelistdata: [0, 0, 0, 0, 0, 0, 0],
-      Fscore: 0,
-      Gscorelistdata: [0, 0, 0, 0, 0, 0, 0],
-      Gscore: 0,
-      Hscorelistdata: [0, 0, 0, 0, 0, 0, 0],
-      Hscore: 0,
-      Iscorelistdata: [0, 0, 0, 0, 0, 0, 0],
-      Iscore: 0,
-      resultlist1: [],
-      resultlist2: [],
-      result: "",
+
+      PingheScore: 0,
+      QiXuScore: 0,
+      YangXuScore: 0,
+      YingXuScore: 0,
+      TanShiScore: 0,
+      ShiReScore: 0,
+      XueYuScore: 0,
+      QiYuScore: 0,
+      TeBingScore: 0,
+
+      result: {
+        isPinghe: null, // 是否平和
+        physical: "", // 当前体质
+        both: [], // 兼有体质（去掉最高分）
+        tenden: [], // 体质倾向
+        healthGuide: [], // 健康建议
+      },
     };
   },
   methods: {
-    onQuestionResultChange({ index, value }) {
-      const answervalue = value;
-      if (this.questionDataList[index].is_decrease == true) {
-        answervalue = 6 - value;
-      }
-      this.scorelistdata[index] = answervalue;
+    onChange(index) {
+      document.getElementById(`question_${index}`).scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
     },
 
-    pingheresult: function () {
-      let totalscore = 0;
-      this.Ascorelistdata[0] = this.scorelistdata[0];
-      this.Ascorelistdata[2] = this.scorelistdata[1];
-      this.Ascorelistdata[3] = this.scorelistdata[2];
-      this.Ascorelistdata[4] = this.scorelistdata[3];
-      this.Ascorelistdata[5] = this.scorelistdata[4];
-      this.Ascorelistdata[6] = this.scorelistdata[5];
-      this.Ascorelistdata[1] = this.scorelistdata[6];
-      this.Ascorelistdata[7] = this.scorelistdata[47];
-      for (let i = 0; i < 8; i++) {
-        totalscore = totalscore + this.Ascorelistdata[i];
+    /**
+     * 计算分数
+     * @param type 体质类型：
+     * 1: 平和质
+     * 2: 气虚质
+     * 3: 阳虚质
+     * 4: 阴虚质
+     * 5: 痰湿质
+     * 6: 湿热质
+     * 7: 血瘀质
+     * 8: 气郁质
+     * 9: 特禀质
+     */
+    calculateScore(type: Number) {
+      const currentTypeList = this.questionDataList.filter(
+        (i: any) =>
+          i.type.includes(type) &&
+          (i.gender != null ? i.gender === this.gender : true)
+      );
+      let totalScore = 0;
+      for (const item of currentTypeList) {
+        let _score = item.value;
+        if (item.is_decrease) {
+          _score = 6 - item.value;
+        }
+        totalScore += _score;
       }
-      console.log(this.Ascorelistdata);
-      let len = 8;
-      this.Ascore = [(totalscore - len) / (len * 4)] * 100;
-      this.Ascore = this.Ascore.toFixed(1);
-      console.log("pinghe score = " + this.Ascore);
+      const len = currentTypeList.length;
+      const _score = ((totalScore - len) / (len * 4)) * 100;
+      return _score.toFixed(1);
     },
 
-    qixuresult: function () {
-      var totalscore = 0;
-      this.Bscorelistdata[0] = this.scorelistdata[6];
-      this.Bscorelistdata[1] = this.scorelistdata[7];
-      this.Bscorelistdata[2] = this.scorelistdata[8];
-      this.Bscorelistdata[3] = this.scorelistdata[9];
-      this.Bscorelistdata[4] = this.scorelistdata[16];
-      this.Bscorelistdata[5] = this.scorelistdata[10];
-      this.Bscorelistdata[6] = this.scorelistdata[1];
-      this.Bscorelistdata[7] = this.scorelistdata[11];
-      for (var i = 0; i < 8; i++) {
-        totalscore = totalscore + this.Bscorelistdata[i];
-      }
-      console.log(this.Bscorelistdata);
-      var len = 8;
-      this.Bscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Bscore = this.Bscore.toFixed(1);
-      console.log("qixu score = " + this.Bscore);
-    },
+    onSubmit() {
+      const PingheScore = this.calculateScore(1);
+      const QiXuScore = this.calculateScore(2);
+      const YangXuScore = this.calculateScore(3);
+      const YingXuScore = this.calculateScore(4);
+      const TanShiScore = this.calculateScore(5);
+      const ShiReScore = this.calculateScore(6);
+      const XueYuScore = this.calculateScore(7);
+      const QiYuScore = this.calculateScore(8);
+      const TeBingScore = this.calculateScore(9);
 
-    yangxuresult: function () {
-      var totalscore = 0;
-      this.Cscorelistdata[0] = this.scorelistdata[12];
-      this.Cscorelistdata[1] = this.scorelistdata[13];
-      this.Cscorelistdata[2] = this.scorelistdata[14];
-      this.Cscorelistdata[3] = this.scorelistdata[3];
-      this.Cscorelistdata[4] = this.scorelistdata[16];
-      this.Cscorelistdata[5] = this.scorelistdata[17];
-      this.Cscorelistdata[6] = this.scorelistdata[18];
-      for (var i = 0; i < 7; i++) {
-        totalscore = totalscore + this.Cscorelistdata[i];
-      }
-      console.log(this.Cscorelistdata);
-      var len = 7;
-      this.Cscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Cscore = this.Cscore.toFixed(1);
-      console.log("yangxu score = " + this.Cscore);
-    },
+      this.PingheScore = PingheScore;
+      this.QiXuScore = QiXuScore;
+      this.YangXuScore = YangXuScore;
+      this.YingXuScore = YingXuScore;
+      this.TanShiScore = TanShiScore;
+      this.ShiReScore = ShiReScore;
+      this.XueYuScore = XueYuScore;
+      this.QiYuScore = QiYuScore;
+      this.TeBingScore = TeBingScore;
 
-    yinxuresult: function () {
-      var totalscore = 0;
-      this.Dscorelistdata[0] = this.scorelistdata[19];
-      this.Dscorelistdata[1] = this.scorelistdata[20];
-      this.Dscorelistdata[2] = this.scorelistdata[21];
-      this.Dscorelistdata[3] = this.scorelistdata[22];
-      this.Dscorelistdata[4] = this.scorelistdata[23];
-      this.Dscorelistdata[5] = this.scorelistdata[24];
-      this.Dscorelistdata[6] = this.scorelistdata[25];
-      this.Dscorelistdata[7] = this.scorelistdata[26];
-      for (var i = 0; i < 8; i++) {
-        totalscore = totalscore + this.Dscorelistdata[i];
-      }
-      console.log(this.Dscorelistdata);
-      var len = 8;
-      this.Dscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Dscore = this.Dscore.toFixed(1);
-      console.log("yinxu score = " + this.Dscore);
-    },
+      const scoreList = [
+        { type: 1, value: PingheScore },
+        { type: 2, value: QiXuScore },
+        { type: 3, value: YangXuScore },
+        { type: 4, value: YingXuScore },
+        { type: 5, value: TanShiScore },
+        { type: 6, value: ShiReScore },
+        { type: 7, value: XueYuScore },
+        { type: 8, value: QiYuScore },
+        { type: 9, value: TeBingScore },
+      ];
 
-    tanxuresult: function () {
-      var totalscore = 0;
-      this.Escorelistdata[0] = this.scorelistdata[27];
-      this.Escorelistdata[1] = this.scorelistdata[28];
-      this.Escorelistdata[2] = this.scorelistdata[29];
-      this.Escorelistdata[3] = this.scorelistdata[30];
-      this.Escorelistdata[4] = this.scorelistdata[31];
-      this.Escorelistdata[5] = this.scorelistdata[32];
-      this.Escorelistdata[6] = this.scorelistdata[33];
-      this.Escorelistdata[7] = this.scorelistdata[34];
-      for (var i = 0; i < 8; i++) {
-        totalscore = totalscore + this.Escorelistdata[i];
-      }
-      console.log(this.Escorelistdata);
-      var len = 8;
-      this.Escore = [(totalscore - len) / (len * 4)] * 100;
-      this.Escore = this.Escore.toFixed(1);
-      console.log("tanxu score = " + this.Escore);
-    },
+      console.log(`\n
+1: 平和质 得分: ${PingheScore}\n
+2: 气虚质 得分: ${QiXuScore}\n
+3: 阳虚质 得分: ${YangXuScore}\n
+4: 阴虚质 得分: ${YingXuScore}\n
+5: 痰湿质 得分: ${TanShiScore}\n
+6: 湿热质 得分: ${ShiReScore}\n
+7: 血瘀质 得分: ${XueYuScore}\n
+8: 气郁质 得分: ${QiYuScore}\n
+9: 特禀质 得分: ${TeBingScore}\n
+`);
 
-    shireresult: function () {
-      var totalscore = 0;
-      this.Fscorelistdata[0] = this.scorelistdata[35];
-      this.Fscorelistdata[1] = this.scorelistdata[36];
-      this.Fscorelistdata[2] = this.scorelistdata[37];
-      this.Fscorelistdata[3] = this.scorelistdata[38];
-      this.Fscorelistdata[4] = this.scorelistdata[39];
-      this.Fscorelistdata[5] = this.scorelistdata[40];
-      this.Fscorelistdata[6] = this.scorelistdata[41];
-      for (var i = 0; i < 5; i++) {
-        totalscore = totalscore + this.Fscorelistdata[i];
+      // 平和质判定标准：
+      // 1. 除平和质外没有超过 40分的体质
+      // 2. 平和质 >= 60分
+
+      // 非平和质判定标准：
+      // 1. 平和质 < 60分 或者 除平和质外有 >= 30 && < 40 分的体质
+
+      // 体质判定标准：
+      // 1. >= 40分 就属于这种体质（取最大值）
+      // 2. >= 30 && < 40分 属于有这种体质的倾向 需要注意
+
+      // 结果：
+      // 1. 当前体质（分数最高的体质）
+      // 2. 兼有体质（其他 >= 40分的体质）
+      // 3. 体质倾向（>= 30 && < 40分的体质）
+
+      const scoreList1 = []; // >= 40分的体质
+      const scoreList2 = []; // >= 30 && < 40分的体质
+
+      console.log(scoreList1);
+      console.log(scoreList2);
+
+      for (const item of scoreList) {
+        if (item.type != 1) {
+          if (item.value >= 40) {
+            scoreList1.push(item);
+          }
+          if (item.value >= 30 && item.value < 40) {
+            scoreList2.push(item);
+          }
+        }
       }
-      if (this.Fscorelistdata[5] == 1) {
-        totalscore = totalscore + this.Fscorelistdata[6];
+
+      // 结果
+      const result = {
+        isPinghe: null, // 是否平和
+        physical: "", // 当前体质
+        both: [], // 兼有体质（去掉最高分）
+        tenden: [], // 体质倾向
+        healthGuide: [], // 健康建议
+      };
+
+      if (PingheScore >= 60 && scoreList1.length == 0) {
+        // 平和质
+        result.isPinghe = true;
+        result.physical = "平和质";
+        for (const item of scoreList) {
+          if (item.type != 1) {
+            if (item.value >= 30 && item.value < 40) {
+              result.tenden.push(TYPE_PHYSIQUE_MAP[item.type]);
+            }
+            if (item.value >= 40) {
+              result.both.push(TYPE_PHYSIQUE_MAP[item.type]);
+            }
+          }
+        }
+        result.healthGuide.push(RESULT_LIST.find((i) => i.type === 1));
       } else {
-        totalscore = totalscore + this.Fscorelistdata[5];
-      }
-      console.log(this.Fscorelistdata);
-      var len = 6;
-      this.Fscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Fscore = this.Fscore.toFixed(1);
-      console.log("shire score = " + this.Fscore);
-    },
+        // 非平和质
+        result.isPinghe = false;
 
-    xueyuresult: function () {
-      var totalscore = 0;
-      this.Gscorelistdata[0] = this.scorelistdata[42];
-      this.Gscorelistdata[1] = this.scorelistdata[43];
-      this.Gscorelistdata[2] = this.scorelistdata[44];
-      this.Gscorelistdata[3] = this.scorelistdata[45];
-      this.Gscorelistdata[4] = this.scorelistdata[46];
-      this.Gscorelistdata[5] = 6 - this.scorelistdata[47];
-      this.Gscorelistdata[6] = this.scorelistdata[48];
-      for (var i = 0; i < 7; i++) {
-        totalscore = totalscore + this.Gscorelistdata[i];
-      }
-      console.log(this.Gscorelistdata);
-      var len = 7;
-      this.Gscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Gscore = this.Gscore.toFixed(1);
-      console.log("xuexu score = " + this.Gscore);
-    },
+        if (scoreList1.length > 0) {
+          const _list = scoreList1.sort((a, b) => {
+            return a.value - b.value;
+          });
 
-    qiyuresult: function () {
-      var totalscore = 0;
-      this.Hscorelistdata[0] = this.scorelistdata[2];
-      this.Hscorelistdata[1] = this.scorelistdata[50];
-      this.Hscorelistdata[2] = this.scorelistdata[51];
-      this.Hscorelistdata[3] = this.scorelistdata[52];
-      this.Hscorelistdata[4] = this.scorelistdata[53];
-      this.Hscorelistdata[5] = this.scorelistdata[54];
-      this.Hscorelistdata[6] = this.scorelistdata[55];
-      for (var i = 0; i < 7; i++) {
-        totalscore = totalscore + this.Hscorelistdata[i];
-      }
-      console.log(this.Hscorelistdata);
-      var len = 7;
-      this.Hscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Hscore = this.Hscore.toFixed(1);
-      console.log("qiyu score = " + this.Hscore);
-    },
+          // 体质(最大值)
+          result.physical = TYPE_PHYSIQUE_MAP[_list[0].type];
+          result.healthGuide.push(
+            RESULT_LIST.find((i) => i.type === _list[0].type)
+          );
 
-    tebingresult: function () {
-      var totalscore = 0;
-      this.Iscorelistdata[0] = this.scorelistdata[56];
-      this.Iscorelistdata[1] = this.scorelistdata[57];
-      this.Iscorelistdata[2] = this.scorelistdata[58];
-      this.Iscorelistdata[3] = this.scorelistdata[59];
-      this.Iscorelistdata[4] = this.scorelistdata[60];
-      this.Iscorelistdata[5] = this.scorelistdata[49];
-      this.Iscorelistdata[6] = this.scorelistdata[15];
-      for (var i = 0; i < 7; i++) {
-        if (this.Iscorelistdata[i]) {
-          totalscore = totalscore + this.Iscorelistdata[i];
+          // 兼有
+          result.both = _list
+            .filter((_item, index) => index > 0)
+            .map((i) => TYPE_PHYSIQUE_MAP[i.type]);
+
+          // 倾向
+          result.tenden = scoreList2.map((i) => TYPE_PHYSIQUE_MAP[i.type]);
+        } else {
+          const _list = scoreList2.sort((a, b) => {
+            return a.value - b.value;
+          });
+
+          // 体质(最大值)
+          result.physical = TYPE_PHYSIQUE_MAP[_list[0].type];
+
+          result.healthGuide.push(
+            RESULT_LIST.find((i) => i.type === _list[0].type)
+          );
         }
       }
-      console.log(this.Iscorelistdata);
-      var len = 7;
-      this.Iscore = [(totalscore - len) / (len * 4)] * 100;
-      this.Iscore = this.Iscore.toFixed(1);
-      console.log("tebing score = " + this.Iscore);
-    },
 
-    onSubmit: function (event) {
-      // this.getscorelist();
-
-      this.pingheresult();
-      this.qixuresult();
-      this.yangxuresult();
-      this.yinxuresult();
-      this.tanxuresult();
-      this.shireresult();
-      this.xueyuresult();
-      this.qiyuresult();
-      this.tebingresult();
-
-      /*
-					this.Ascore = 80;
-					this.Bscore = 30;
-					this.Cscore = 0;
-					this.Dscore = 0;
-					this.Escore = 0;
-					this.Fscore = 0;
-					this.Gscore = 0;
-					this.Hscore = 0;
-					this.Iscore = 0;
-				   */
-
-      var qitatishilist = [];
-      var resultlist1 = [];
-      var resultlist2 = [];
-
-      if (this.Bscore >= 40) {
-        resultlist1.push("气虚质");
-        qitatishilist.push(this.allresultlistdata[1]);
-      } else if (this.Bscore < 40 && this.Bscore >= 30) {
-        resultlist2.push("有气虚倾向");
-        qitatishilist.push(this.allresultlistdata[1]);
-      }
-      if (this.Cscore >= 40) {
-        resultlist1.push("阳虚质");
-        qitatishilist.push(this.allresultlistdata[2]);
-      } else if (this.Cscore < 40 && this.Cscore >= 30) {
-        resultlist2.push("有阳虚倾向");
-        qitatishilist.push(this.allresultlistdata[2]);
-      }
-      if (this.Dscore >= 40) {
-        resultlist1.push("阴虚质");
-        qitatishilist.push(this.allresultlistdata[3]);
-      } else if (this.Dscore < 40 && this.Dscore >= 30) {
-        resultlist2.push("有阴虚倾向");
-        qitatishilist.push(this.allresultlistdata[3]);
-      }
-      if (this.Escore >= 40) {
-        resultlist1.push("痰湿质");
-        qitatishilist.push(this.allresultlistdata[4]);
-      } else if (this.Escore < 40 && this.Escore >= 30) {
-        resultlist2.push("有痰湿倾向");
-        qitatishilist.push(this.allresultlistdata[4]);
-      }
-      if (this.Fscore >= 40) {
-        resultlist1.push("湿热质");
-        qitatishilist.push(this.allresultlistdata[5]);
-      } else if (this.Fscore < 40 && this.Fscore >= 30) {
-        resultlist2.push("有湿热倾向");
-        qitatishilist.push(this.allresultlistdata[5]);
-      }
-      if (this.Gscore >= 40) {
-        resultlist1.push("血瘀质");
-        qitatishilist.push(this.allresultlistdata[6]);
-      } else if (this.Gscore < 40 && this.Gscore >= 30) {
-        resultlist2.push("有血瘀倾向");
-        qitatishilist.push(this.allresultlistdata[6]);
-      }
-      if (this.Hscore >= 40) {
-        resultlist1.push("气郁质");
-        qitatishilist.push(this.allresultlistdata[7]);
-      } else if (this.Hscore < 40 && this.Hscore >= 30) {
-        resultlist2.push("有气郁倾向");
-        qitatishilist.push(this.allresultlistdata[7]);
-      }
-      if (this.Iscore >= 40) {
-        resultlist1.push("特禀质");
-        qitatishilist.push(this.allresultlistdata[8]);
-      } else if (this.Iscore < 40 && this.Iscore >= 30) {
-        resultlist2.push("有特禀倾向");
-        qitatishilist.push(this.allresultlistdata[8]);
-      }
-
-      console.log(this.resultlist1);
-      console.log(this.resultlist2);
-
-      this.resultlist1 = resultlist1;
-      this.resultlist2 = resultlist2;
-
-      if (this.resultlist1.length > 0) {
-        for (var i = 0; i < this.resultlist1.length - 1; i++) {
-          this.result = this.result + this.resultlist1[i] + "，";
-        }
-        this.result = this.result + this.resultlist1[i];
-      } else if (
-        this.resultlist1.length == 0 &&
-        this.Ascore >= 60 &&
-        this.resultlist2.length == 0
-      ) {
-        this.result = "平和质";
-        this.resultlistdata.push(this.allresultlistdata[0]);
-      } else if (
-        this.resultlist1.length == 0 &&
-        this.Ascore >= 60 &&
-        this.resultlist2.length > 0
-      ) {
-        this.result = "基本是平和质，";
-        for (var i = 0; i < this.resultlist2.length - 1; i++) {
-          this.result = this.result + this.resultlist2[i] + "，";
-        }
-        this.result = this.result + this.resultlist2[i];
-        this.resultlistdata.push(this.allresultlistdata[0]);
-        this.resultlistdata = this.resultlistdata.concat(qitatishilist);
-        console.log(this.resultlistdata.length);
-      } else if (
-        this.resultlist1.length == 0 &&
-        this.Ascore < 60 &&
-        this.resultlist2.length == 0
-      ) {
-        this.result = "非平和质";
-      } else if (
-        this.resultlist1.length == 0 &&
-        this.Ascore < 60 &&
-        this.resultlist2.length > 0
-      ) {
-        this.result = "非平和质，";
-        for (var i = 0; i < this.resultlist2.length - 1; i++) {
-          this.result = this.result + this.resultlist2[i] + "，";
-        }
-        this.result = this.result + this.resultlist2[i];
-        this.resultlistdata = this.resultlistdata.concat(qitatishilist);
-        console.log(this.resultlistdata.length);
-      }
+      console.log(result);
+      this.result = result;
 
       this.initChart();
     },
 
     initChart() {
-      var {
-        Ascore, // 平和
-        Bscore, // 气虚
-        Cscore, // 阳虚
-        Dscore, // 阴虚
-        Escore, // 痰湿质
-        Fscore, // 湿热质
-        Gscore, // 血瘀质
-        Hscore, // 气郁质
-        Iscore, // 特禀质
+      let {
+        PingheScore, // 平和
+        QiXuScore, // 气虚
+        YangXuScore, // 阳虚
+        YingXuScore, // 阴虚
+        TanShiScore, // 痰湿质
+        ShiReScore, // 湿热质
+        XueYuScore, // 血瘀质
+        QiYuScore, // 气郁质
+        TeBingScore, // 特禀质
       } = this;
-      // Bscore = 11;
-      // Cscore = 55;
-      // Dscore = 33;
-      // Escore = 22;
-      // Fscore = 33;
-      // Gscore = 34;
-      // Hscore = 44;
-      // Iscore = 11;
+      // QiXuScore = 11;
+      // YangXuScore = 55;
+      // YingXuScore = 33;
+      // TanShiScore = 22;
+      // ShiReScore = 33;
+      // XueYuScore = 34;
+      // QiYuScore = 44;
+      // TeBingScore = 11;
       const chartDom = document.getElementById("echart");
       const myChart = echarts.init(chartDom);
 
@@ -579,14 +420,14 @@ export default defineComponent({
         series: [
           {
             data: [
-              Bscore,
-              Cscore,
-              Dscore,
-              Escore,
-              Fscore,
-              Gscore,
-              Hscore,
-              Iscore,
+              QiXuScore,
+              YangXuScore,
+              YingXuScore,
+              TanShiScore,
+              ShiReScore,
+              XueYuScore,
+              QiYuScore,
+              TeBingScore,
             ],
             type: "bar",
             markLine: {
@@ -639,10 +480,10 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .page {
-  height: 100vh;
   max-width: 400px;
   margin: 0 auto;
   position: relative;
+  background: #a7d168;
 }
 
 /* 首页 */
@@ -740,6 +581,7 @@ export default defineComponent({
 /* page */
 
 .content {
+  background: #a7d168;
   position: relative;
   overflow-y: scroll;
 }
@@ -832,13 +674,10 @@ export default defineComponent({
 
 /* 结果页面 */
 .result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: 100vh;
 }
 
 .result .my {
-  margin: 20px auto 0;
   text-align: center;
 }
 
