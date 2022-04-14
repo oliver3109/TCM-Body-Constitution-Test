@@ -1,6 +1,6 @@
 {
   "node_modules/nuxt3/dist/app/entry.mjs": {
-    "file": "entry-e390af41.mjs",
+    "file": "entry-946df021.mjs",
     "src": "node_modules/nuxt3/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -11,7 +11,7 @@
     ]
   },
   "pages/index.vue": {
-    "file": "index-5ba22a87.mjs",
+    "file": "index-64e3c8cf.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
