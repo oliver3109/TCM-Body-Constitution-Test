@@ -216,22 +216,9 @@
 <script lang="ts">
 import { Toast } from "vant";
 import * as echarts from "echarts";
-import { Pagination, Navigation } from "Swiper";
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-
-import "swiper/css";
-import "swiper/css/navigation";
-// import "swiper/css/pagination";
-
 import { QUESTION_LIST, RESULT_LIST, TYPE_PHYSIQUE_MAP } from "./data";
 
 export default defineComponent({
-  components: {
-    Swiper,
-    SwiperSlide,
-    // NButton,
-  },
-
   data() {
     return {
       share: true,
@@ -632,7 +619,6 @@ export default defineComponent({
 
     return {
       gender,
-      modules: [Pagination, Navigation],
       onSelectGender,
       questionDataList,
       strFilter: computed(function () {
