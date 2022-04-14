@@ -14,6 +14,10 @@ export default defineNuxtConfig({
   ssr: true,
   target: "static",
   ...routerBase,
+  app: {
+    cdnURL:
+      "https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/",
+  },
   meta: {
     charset: "utf-8",
     viewport:
