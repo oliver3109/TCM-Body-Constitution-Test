@@ -1,13 +1,12 @@
 sudo: false
 language: node_js
 node_js:
-  - 10
+  - 16
 cache: npm
 branches:
   only:
     - main
 script:
-  - npm i
   - npm run generate:gh-pages
 deploy:
   provider: pages
