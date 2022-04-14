@@ -420,6 +420,7 @@ export default defineComponent({
         if (scoreList1.length > 0 || scoreList2.length > 0) {
           result.physical = "基本平和质";
         }
+        result.healthGuide.push(RESULT_LIST.find((i) => i.type === 1));
         for (const item of scoreList) {
           if (item.type != 1) {
             if (item.value >= 40) {
