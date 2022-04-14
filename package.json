@@ -2,12 +2,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "generate": "nuxi generate",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
     "start": "node .output/server/index.mjs",
-    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxi build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxi generate"
+    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "devDependencies": {
     "@css-render/vue3-ssr": "^0.15.9",
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "echarts": "^5.3.2",
-     "vant": "^3.4.7"
-   }
+    "vant": "^3.4.7"
+  }
 }
