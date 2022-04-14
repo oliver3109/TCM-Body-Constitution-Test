@@ -412,21 +412,30 @@ export default defineComponent({
         healthGuide: [], // 健康建议
       };
 
-      if (PingheScore >= 60 && scoreList1.length == 0) {
-        // 平和质
+      if (PingheScore >= 60) {
         result.isPinghe = true;
-        result.physical = "平和质";
+        if (scoreList1.length == 0 && scoreList2.length == 0) {
+          result.physical = "平和质";
+        }
+        if (scoreList1.length > 0 || scoreList2.length > 0) {
+          result.physical = "基本平和质";
+        }
         for (const item of scoreList) {
           if (item.type != 1) {
-            if (item.value >= 30 && item.value < 40) {
-              result.tenden.push(TYPE_PHYSIQUE_MAP[item.type]);
-            }
             if (item.value >= 40) {
               result.both.push(TYPE_PHYSIQUE_MAP[item.type]);
+              result.healthGuide.push(
+                RESULT_LIST.find((i) => i.type === item.type)
+              );
+            }
+            if (item.value >= 30 && item.value < 40) {
+              result.tenden.push(TYPE_PHYSIQUE_MAP[item.type]);
+              result.healthGuide.push(
+                RESULT_LIST.find((i) => i.type === item.type)
+              );
             }
           }
         }
-        result.healthGuide.push(RESULT_LIST.find((i) => i.type === 1));
       } else {
         // 非平和质
         result.isPinghe = false;
