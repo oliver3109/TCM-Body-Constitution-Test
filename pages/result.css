@@ -132,31 +132,31 @@
   margin-left: 18px;
 }
 
-::v-deep .result .health-guide .van-tabs__nav--card {
+:deep .result .health-guide .van-tabs__nav--card {
   border: 2px solid #242421;
   border-radius: 9px;
 }
-::v-deep .result .health-guide .van-tab {
+:deep .result .health-guide .van-tab {
   background-color: #efeec9;
   color: #242421;
   border-right: 2px solid #242421;
 }
-::v-deep .result .health-guide .van-tab:first-of-type {
+:deep .result .health-guide .van-tab:first-of-type {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-::v-deep .result .health-guide .van-tab:last-of-type {
+:deep .result .health-guide .van-tab:last-of-type {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-::v-deep .result .health-guide .van-tab:last-of-type {
+:deep .result .health-guide .van-tab:last-of-type {
   border-right: none;
 }
-::v-deep .result .health-guide .van-tab--active {
+:deep .result .health-guide .van-tab--active {
   background-color: #f5e617;
   color: #242421;
 }
-::v-deep .result .health-guide .van-tabs__content {
+:deep .result .health-guide .van-tabs__content {
   padding: 0 16px;
 }
 
