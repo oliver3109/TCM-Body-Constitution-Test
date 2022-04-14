@@ -89,7 +89,7 @@
     </div>
 
     <div class="result" v-else>
-      <div class="top">
+      <div class="top" id="resultTop">
         <div class="title">Z式养生</div>
         <div class="center">养生绝不放松，走上人生巅峰</div>
 
@@ -207,13 +207,14 @@
             style="border-radius: 5px"
           />
         </div>
-        <div class="text">关注小红书学习养生、健康知识</div>
+        <div class="text">关注“Z式养生”学习养生、健康知识</div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { Toast } from "vant";
 import * as echarts from "echarts";
 import { Pagination, Navigation } from "Swiper";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
@@ -304,6 +305,17 @@ export default defineComponent({
     },
 
     onSubmit() {
+      // 判断是否有空值
+      const isNullIndex = this.questionDataList.findIndex((i) => i.value == 0);
+      if (isNullIndex > 0) {
+        document.getElementById(`question_${isNullIndex}`).scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
+        Toast(`请填写第${isNullIndex + 1}题`);
+        return;
+      }
+
       const PingheScore = this.calculateScore(1);
       const QiXuScore = this.calculateScore(2);
       const YangXuScore = this.calculateScore(3);
@@ -580,6 +592,15 @@ export default defineComponent({
               },
             },
           ],
+        });
+
+        this.$nextTick(() => {
+          setTimeout(() => {
+            document.getElementById(`resultTop`).scrollIntoView({
+              block: "start",
+              behavior: "auto",
+            });
+          }, 300);
         });
       });
     },
