@@ -79,6 +79,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .check-btn .item.active {

@@ -225,6 +225,7 @@
   height: 26px;
   line-height: 26px;
   text-align: center;
+  cursor: pointer;
 }
 .result .end {
   padding-bottom: 40px;
