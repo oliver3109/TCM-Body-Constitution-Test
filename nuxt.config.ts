@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
     script: [
       {
-        src: "/flexible.js",
+        src: "/_nuxt/flexible.js",
         type: "text/javascript",
       },
     ],
