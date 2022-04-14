@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ["echarts"],
+    transpile: ["vant", "echarts"],
     postcss: {
       postcssOptions: require("./postcss.config.js"),
     },

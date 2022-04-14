@@ -8,17 +8,19 @@ specifiers:
   postcss: ^8.4.12
   postcss-pxtorem: ^6.0.0
   swiper: ^8.1.0
+  vant: ^3.4.7
   vue-awesome-swiper: ^5.0.1
 
 dependencies:
   echarts: registry.npmmirror.com/echarts/5.3.2
   swiper: registry.npmmirror.com/swiper/8.1.0
+  vant: registry.npmmirror.com/vant/3.4.7
   vue-awesome-swiper: registry.npmmirror.com/vue-awesome-swiper/5.0.1_swiper@8.1.0
 
 devDependencies:
   '@css-render/vue3-ssr': registry.npmmirror.com/@css-render/vue3-ssr/0.15.9
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.4_postcss@8.4.12
-  nuxt3: registry.npmmirror.com/nuxt3/3.0.0-27497374.59593a0
+  nuxt3: registry.npmmirror.com/nuxt3/3.0.0-27497942.c519cee
   postcss: registry.npmmirror.com/postcss/8.4.12
   postcss-pxtorem: registry.npmmirror.com/postcss-pxtorem/6.0.0_postcss@8.4.12
 
@@ -519,13 +521,13 @@ packages:
     version: 2.0.0
     dev: true
 
-  registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497374.59593a0:
-    resolution: {integrity: sha512-YivYgL8gaZXSJhKlxZHF5qfQacA55CYVAJidJee4kuOM122ZIOdHf3kVTtXfhBu4dkczLbwpSK44cdZ0eGhzKA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27497374.59593a0.tgz}
+  registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497942.c519cee:
+    resolution: {integrity: sha512-akkS96BjimPQdAmdguMugcSYA4LSS/mod6U4YKNXN9LP0eF2phbzP39iHhFa+wlQ08i0dTLLyjK88+Cv6YSlNw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27497942.c519cee.tgz}
     name: '@nuxt/kit-edge'
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
-      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0
+      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee
       c12: registry.npmmirror.com/c12/0.2.5
       consola: registry.npmmirror.com/consola/2.15.3
       defu: registry.npmmirror.com/defu/6.0.0
@@ -541,7 +543,7 @@ packages:
       scule: registry.npmmirror.com/scule/0.2.1
       semver: registry.npmmirror.com/semver/7.3.7
       unctx: registry.npmmirror.com/unctx/1.1.4
-      unimport: registry.npmmirror.com/unimport/0.1.4
+      unimport: registry.npmmirror.com/unimport/0.1.5
       untyped: registry.npmmirror.com/untyped/0.4.4
     transitivePeerDependencies:
       - esbuild
@@ -551,14 +553,14 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497374.59593a0_83dd4d1a11bf7faa2d41f89ea3fae952:
-    resolution: {integrity: sha512-YivYgL8gaZXSJhKlxZHF5qfQacA55CYVAJidJee4kuOM122ZIOdHf3kVTtXfhBu4dkczLbwpSK44cdZ0eGhzKA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27497374.59593a0.tgz}
-    id: registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497374.59593a0
+  registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497942.c519cee_eb1617e2d707834de208aef43b9deec1:
+    resolution: {integrity: sha512-akkS96BjimPQdAmdguMugcSYA4LSS/mod6U4YKNXN9LP0eF2phbzP39iHhFa+wlQ08i0dTLLyjK88+Cv6YSlNw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27497942.c519cee.tgz}
+    id: registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497942.c519cee
     name: '@nuxt/kit-edge'
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
-      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0_83dd4d1a11bf7faa2d41f89ea3fae952
+      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee_eb1617e2d707834de208aef43b9deec1
       c12: registry.npmmirror.com/c12/0.2.5
       consola: registry.npmmirror.com/consola/2.15.3
       defu: registry.npmmirror.com/defu/6.0.0
@@ -573,8 +575,8 @@ packages:
       pkg-types: registry.npmmirror.com/pkg-types/0.3.2
       scule: registry.npmmirror.com/scule/0.2.1
       semver: registry.npmmirror.com/semver/7.3.7
-      unctx: registry.npmmirror.com/unctx/1.1.4_83dd4d1a11bf7faa2d41f89ea3fae952
-      unimport: registry.npmmirror.com/unimport/0.1.4_83dd4d1a11bf7faa2d41f89ea3fae952
+      unctx: registry.npmmirror.com/unctx/1.1.4_eb1617e2d707834de208aef43b9deec1
+      unimport: registry.npmmirror.com/unimport/0.1.5_eb1617e2d707834de208aef43b9deec1
       untyped: registry.npmmirror.com/untyped/0.4.4
     transitivePeerDependencies:
       - esbuild
@@ -584,10 +586,10 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0:
-    resolution: {integrity: sha512-YokNDkFV1n6RZMFCP34L2KwoEc+Jj7JRvYpcb8g/ILNnfPy1apXGZKW/xVW2+bOpIZGUqo34KbZgZTFQ/9RJtA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27497374.59593a0.tgz}
+  registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee:
+    resolution: {integrity: sha512-jvuLI8tIbEPqPOeHXXhTyALQo3Qb+BJvCITxDx2+xdDadHaAP3cavmJBF9/sC6kanxrvltUbJP0gdM3N0e0GBQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27497942.c519cee.tgz}
     name: '@nuxt/schema-edge'
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
       c12: registry.npmmirror.com/c12/0.2.5
@@ -599,7 +601,7 @@ packages:
       scule: registry.npmmirror.com/scule/0.2.1
       std-env: registry.npmmirror.com/std-env/3.0.1
       ufo: registry.npmmirror.com/ufo/0.8.3
-      unimport: registry.npmmirror.com/unimport/0.1.4
+      unimport: registry.npmmirror.com/unimport/0.1.5
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -607,11 +609,11 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0_83dd4d1a11bf7faa2d41f89ea3fae952:
-    resolution: {integrity: sha512-YokNDkFV1n6RZMFCP34L2KwoEc+Jj7JRvYpcb8g/ILNnfPy1apXGZKW/xVW2+bOpIZGUqo34KbZgZTFQ/9RJtA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27497374.59593a0.tgz}
-    id: registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0
+  registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee_eb1617e2d707834de208aef43b9deec1:
+    resolution: {integrity: sha512-jvuLI8tIbEPqPOeHXXhTyALQo3Qb+BJvCITxDx2+xdDadHaAP3cavmJBF9/sC6kanxrvltUbJP0gdM3N0e0GBQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27497942.c519cee.tgz}
+    id: registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee
     name: '@nuxt/schema-edge'
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
       c12: registry.npmmirror.com/c12/0.2.5
@@ -623,7 +625,7 @@ packages:
       scule: registry.npmmirror.com/scule/0.2.1
       std-env: registry.npmmirror.com/std-env/3.0.1
       ufo: registry.npmmirror.com/ufo/0.8.3
-      unimport: registry.npmmirror.com/unimport/0.1.4_83dd4d1a11bf7faa2d41f89ea3fae952
+      unimport: registry.npmmirror.com/unimport/0.1.5_eb1617e2d707834de208aef43b9deec1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -637,18 +639,18 @@ packages:
     version: 0.0.0-27479051.598a8a0
     dev: true
 
-  registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497374.59593a0_vue@3.2.32:
-    resolution: {integrity: sha512-rL5nr0XqEDf5Yt72ydQkLutuIU+Pffuzxq1uDlNZdDkjjM1akiedoWNPpxrK8satPd5/pRVDdeGEhaTEKVKLFA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/vite-builder-edge/-/vite-builder-edge-3.0.0-27497374.59593a0.tgz}
-    id: registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497374.59593a0
+  registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497942.c519cee_vue@3.2.32:
+    resolution: {integrity: sha512-4tuFIosNTffySRBX29quJCRZWqP5RAH7veNFNOMeTlgQNjZsrNrgg284yOH44uopJ0Vu5yKQPyNm6V5RDMyIgQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/vite-builder-edge/-/vite-builder-edge-3.0.0-27497942.c519cee.tgz}
+    id: registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497942.c519cee
     name: '@nuxt/vite-builder-edge'
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     peerDependencies:
       vue: 3.2.32
     dependencies:
-      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497374.59593a0_83dd4d1a11bf7faa2d41f89ea3fae952
-      '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.1_vite@2.9.1+vue@3.2.32
-      '@vitejs/plugin-vue-jsx': registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.3.9
+      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497942.c519cee_eb1617e2d707834de208aef43b9deec1
+      '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.1_vite@2.9.4+vue@3.2.32
+      '@vitejs/plugin-vue-jsx': registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.3.10
       autoprefixer: registry.npmmirror.com/autoprefixer/10.4.4_postcss@8.4.12
       chokidar: registry.npmmirror.com/chokidar/3.5.3
       cssnano: registry.npmmirror.com/cssnano/5.1.7_postcss@8.4.12
@@ -669,8 +671,8 @@ packages:
       rollup: registry.npmmirror.com/rollup/2.70.1
       rollup-plugin-visualizer: registry.npmmirror.com/rollup-plugin-visualizer/5.6.0_rollup@2.70.1
       ufo: registry.npmmirror.com/ufo/0.8.3
-      unplugin: registry.npmmirror.com/unplugin/0.6.1_83dd4d1a11bf7faa2d41f89ea3fae952
-      vite: registry.npmmirror.com/vite/2.9.1
+      unplugin: registry.npmmirror.com/unplugin/0.6.1_eb1617e2d707834de208aef43b9deec1
+      vite: registry.npmmirror.com/vite/2.9.4
       vite-node: registry.npmmirror.com/vite-node/0.9.3
       vue: registry.npmmirror.com/vue/3.2.32
     transitivePeerDependencies:
@@ -680,6 +682,12 @@ packages:
       - supports-color
       - webpack
     dev: true
+
+  registry.npmmirror.com/@popperjs/core/2.11.5:
+    resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@popperjs/core/-/core-2.11.5.tgz}
+    name: '@popperjs/core'
+    version: 2.11.5
+    dev: false
 
   registry.npmmirror.com/@rollup/plugin-alias/3.1.9_rollup@2.70.1:
     resolution: {integrity: sha512-QI5fsEvm9bDzt32k39wpOwZhVzRcL5ydcffUHMyLVaVaLeC70I8TJZ17F1z1eMoLu4E/UOcH9BWVkKpIKdrfiw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@rollup/plugin-alias/-/plugin-alias-3.1.9.tgz}
@@ -867,6 +875,26 @@ packages:
     version: 4.0.1
     dev: true
 
+  registry.npmmirror.com/@vant/icons/1.8.0:
+    resolution: {integrity: sha512-sKfEUo2/CkQFuERxvkuF6mGQZDKu3IQdj5rV9Fm0weJXtchDSSQ+zt8qPCNUEhh9Y8shy5PzxbvAfOOkCwlCXg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vant/icons/-/icons-1.8.0.tgz}
+    name: '@vant/icons'
+    version: 1.8.0
+    dev: false
+
+  registry.npmmirror.com/@vant/popperjs/1.1.0:
+    resolution: {integrity: sha512-8MD1gz146awV/uPxYjz4pet22f7a9YVKqk7T+gFkWFwT9mEcrIUEg/xPrdOnWKLP9puXyYtm7oVfSDSefZ/p/w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vant/popperjs/-/popperjs-1.1.0.tgz}
+    name: '@vant/popperjs'
+    version: 1.1.0
+    dependencies:
+      '@popperjs/core': registry.npmmirror.com/@popperjs/core/2.11.5
+    dev: false
+
+  registry.npmmirror.com/@vant/use/1.3.6:
+    resolution: {integrity: sha512-3z+nywPaV2F5BdJO7RQxWlgfzJeEOmViD2yHMb7Tg+R4NR/7iQskqW8v2Cnv9FWSJgTOSHlcr7UzeLpiTAP4HA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vant/use/-/use-1.3.6.tgz}
+    name: '@vant/use'
+    version: 1.3.6
+    dev: false
+
   registry.npmmirror.com/@vercel/nft/0.18.1:
     resolution: {integrity: sha512-i2zmXs8ueqCe/dmQ0fzQk9MmXoqdqxR1ZsxPN8poHZfc3NQES1WTEsXkEoaL+RV5BKZi04lNpkoGwtqcxERAOQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vercel/nft/-/nft-0.18.1.tgz}
     name: '@vercel/nft'
@@ -889,10 +917,10 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.3.9:
-    resolution: {integrity: sha512-aJpmBpAXM9jbVWaf7UR22/c0v/wfNPqOj0nBibuOndnrM8YmPAj4NnHEasguXxf0wVH00DinWqyzgZV8CZqEOQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-1.3.9.tgz}
+  registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.3.10:
+    resolution: {integrity: sha512-Cf5zznh4yNMiEMBfTOztaDVDmK1XXfgxClzOSUVUc8WAmHzogrCUeM8B05ABzuGtg0D1amfng+mUmSIOFGP3Pw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-1.3.10.tgz}
     name: '@vitejs/plugin-vue-jsx'
-    version: 1.3.9
+    version: 1.3.10
     engines: {node: '>=12.0.0'}
     dependencies:
       '@babel/core': registry.npmmirror.com/@babel/core/7.17.9
@@ -905,7 +933,7 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/@vitejs/plugin-vue/2.3.1_vite@2.9.1+vue@3.2.32:
+  registry.npmmirror.com/@vitejs/plugin-vue/2.3.1_vite@2.9.4+vue@3.2.32:
     resolution: {integrity: sha512-YNzBt8+jt6bSwpt7LP890U1UcTOIZZxfpE5WOJ638PNxSEKOqAi0+FSKS0nVeukfdZ0Ai/H7AFd6k3hayfGZqQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-2.3.1.tgz}
     id: registry.npmmirror.com/@vitejs/plugin-vue/2.3.1
     name: '@vitejs/plugin-vue'
@@ -915,7 +943,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: registry.npmmirror.com/vite/2.9.1
+      vite: registry.npmmirror.com/vite/2.9.4
       vue: registry.npmmirror.com/vue/3.2.32
     dev: true
 
@@ -3842,7 +3870,7 @@ packages:
       table: registry.npmmirror.com/table/6.8.0
       ufo: registry.npmmirror.com/ufo/0.8.3
       unenv: registry.npmmirror.com/unenv/0.4.6
-      unimport: registry.npmmirror.com/unimport/0.1.4_esbuild@0.14.36+rollup@2.70.1
+      unimport: registry.npmmirror.com/unimport/0.1.5_esbuild@0.14.36+rollup@2.70.1
       unstorage: registry.npmmirror.com/unstorage/0.3.3
     transitivePeerDependencies:
       - bufferutil
@@ -4036,27 +4064,27 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  registry.npmmirror.com/nuxi-edge/3.0.0-27497374.59593a0:
-    resolution: {integrity: sha512-se8L38eCNtZk7qPu0XZacIlGgL8eHd8Li5FTLhfmm4UbCaPKO7W309Skx20bkCm42N9v4rkiDgVsuZ8XAYevfw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxi-edge/-/nuxi-edge-3.0.0-27497374.59593a0.tgz}
+  registry.npmmirror.com/nuxi-edge/3.0.0-27497942.c519cee:
+    resolution: {integrity: sha512-QaAHnyofCWShUMrOmDTv66cXNZPSZAcVJoiSdpvmtHHsFT3K7FZjj8iyjtnWYH91r9cuua3TcSbT9GK0TpN8dQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxi-edge/-/nuxi-edge-3.0.0-27497942.c519cee.tgz}
     name: nuxi-edge
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     hasBin: true
     optionalDependencies:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
     dev: true
 
-  registry.npmmirror.com/nuxt3/3.0.0-27497374.59593a0:
-    resolution: {integrity: sha512-ll/iIaRGLXffA+FVsg7EN+VWcP1HLWIn7WIQRWpUjJ/2J+jtCWIH3ETTYn8ikSaA9/v86PSakxmw4cKkL4greA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxt3/-/nuxt3-3.0.0-27497374.59593a0.tgz}
+  registry.npmmirror.com/nuxt3/3.0.0-27497942.c519cee:
+    resolution: {integrity: sha512-TZU9dHCYdVmHpe2JoF1BvzMFlw10kYiNqq+QHs17tLWnO6XmY7PXQ3TK/Af2s1ziLKpHCHXHCug9oY0A5jfb/g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxt3/-/nuxt3-3.0.0-27497942.c519cee.tgz}
     name: nuxt3
-    version: 3.0.0-27497374.59593a0
+    version: 3.0.0-27497942.c519cee
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     hasBin: true
     dependencies:
-      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497374.59593a0
-      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497374.59593a0
+      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit-edge/3.0.0-27497942.c519cee
+      '@nuxt/schema': registry.npmmirror.com/@nuxt/schema-edge/3.0.0-27497942.c519cee
       '@nuxt/ui-templates': registry.npmmirror.com/@nuxt/ui-templates-edge/0.0.0-27479051.598a8a0
-      '@nuxt/vite-builder': registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497374.59593a0_vue@3.2.32
+      '@nuxt/vite-builder': registry.npmmirror.com/@nuxt/vite-builder-edge/3.0.0-27497942.c519cee_vue@3.2.32
       '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.32
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.32
       '@vueuse/head': registry.npmmirror.com/@vueuse/head/0.7.6_vue@3.2.32
@@ -4074,7 +4102,7 @@ packages:
       magic-string: registry.npmmirror.com/magic-string/0.26.1
       mlly: registry.npmmirror.com/mlly/0.5.1
       nitropack: registry.npmmirror.com/nitropack/0.2.7
-      nuxi: registry.npmmirror.com/nuxi-edge/3.0.0-27497374.59593a0
+      nuxi: registry.npmmirror.com/nuxi-edge/3.0.0-27497942.c519cee
       ohash: registry.npmmirror.com/ohash/0.1.0
       ohmyfetch: registry.npmmirror.com/ohmyfetch/0.4.15
       pathe: registry.npmmirror.com/pathe/0.2.0
@@ -4083,7 +4111,7 @@ packages:
       ufo: registry.npmmirror.com/ufo/0.8.3
       unctx: registry.npmmirror.com/unctx/1.1.4
       unenv: registry.npmmirror.com/unenv/0.4.6
-      unimport: registry.npmmirror.com/unimport/0.1.4
+      unimport: registry.npmmirror.com/unimport/0.1.5
       unplugin: registry.npmmirror.com/unplugin/0.6.1
       untyped: registry.npmmirror.com/untyped/0.4.4
       vue: registry.npmmirror.com/vue/3.2.32
@@ -5641,7 +5669,7 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/unctx/1.1.4_83dd4d1a11bf7faa2d41f89ea3fae952:
+  registry.npmmirror.com/unctx/1.1.4_eb1617e2d707834de208aef43b9deec1:
     resolution: {integrity: sha512-fQMML+GjUpIjQa0HBrrJezo2dFpTAbQbU0/KFKw4T5wpc9deGjLHSYthdfNAo2xSWM34csI6arzedezQkqtfGw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unctx/-/unctx-1.1.4.tgz}
     id: registry.npmmirror.com/unctx/1.1.4
     name: unctx
@@ -5650,7 +5678,7 @@ packages:
       acorn: registry.npmmirror.com/acorn/8.7.0
       estree-walker: registry.npmmirror.com/estree-walker/2.0.2
       magic-string: registry.npmmirror.com/magic-string/0.26.1
-      unplugin: registry.npmmirror.com/unplugin/0.6.1_83dd4d1a11bf7faa2d41f89ea3fae952
+      unplugin: registry.npmmirror.com/unplugin/0.6.1_eb1617e2d707834de208aef43b9deec1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5681,20 +5709,20 @@ packages:
       util: registry.npmmirror.com/util/0.12.4
     dev: true
 
-  registry.npmmirror.com/unimport/0.1.4:
-    resolution: {integrity: sha512-vrqIM/YzAQZR9UDod94pAQmYRFA/3m88KiL/U91pN9m6BVFG0TplxLe6siGn1V3XwQb14UJHqj7hiATjwUwI9A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.4.tgz}
+  registry.npmmirror.com/unimport/0.1.5:
+    resolution: {integrity: sha512-Wv+CFdDJXkyiHD6yXeHdYMmD5LisII43o6q2ttw1s5mAhwfcBtZPRbZcqPvSkgHX4ZzMPTUIstMhVfC+tHrh6A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.5.tgz}
     name: unimport
-    version: 0.1.4
+    version: 0.1.5
     dependencies:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/4.2.0
       escape-string-regexp: registry.npmmirror.com/escape-string-regexp/5.0.0
       globby: registry.npmmirror.com/globby/13.1.1
       local-pkg: registry.npmmirror.com/local-pkg/0.4.1
       magic-string: registry.npmmirror.com/magic-string/0.26.1
-      mlly: registry.npmmirror.com/mlly/0.4.3
+      mlly: registry.npmmirror.com/mlly/0.5.1
       pathe: registry.npmmirror.com/pathe/0.2.0
       scule: registry.npmmirror.com/scule/0.2.1
-      unplugin: registry.npmmirror.com/unplugin/0.3.3
+      unplugin: registry.npmmirror.com/unplugin/0.6.1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5702,21 +5730,21 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/unimport/0.1.4_83dd4d1a11bf7faa2d41f89ea3fae952:
-    resolution: {integrity: sha512-vrqIM/YzAQZR9UDod94pAQmYRFA/3m88KiL/U91pN9m6BVFG0TplxLe6siGn1V3XwQb14UJHqj7hiATjwUwI9A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.4.tgz}
-    id: registry.npmmirror.com/unimport/0.1.4
+  registry.npmmirror.com/unimport/0.1.5_eb1617e2d707834de208aef43b9deec1:
+    resolution: {integrity: sha512-Wv+CFdDJXkyiHD6yXeHdYMmD5LisII43o6q2ttw1s5mAhwfcBtZPRbZcqPvSkgHX4ZzMPTUIstMhVfC+tHrh6A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.5.tgz}
+    id: registry.npmmirror.com/unimport/0.1.5
     name: unimport
-    version: 0.1.4
+    version: 0.1.5
     dependencies:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/4.2.0
       escape-string-regexp: registry.npmmirror.com/escape-string-regexp/5.0.0
       globby: registry.npmmirror.com/globby/13.1.1
       local-pkg: registry.npmmirror.com/local-pkg/0.4.1
       magic-string: registry.npmmirror.com/magic-string/0.26.1
-      mlly: registry.npmmirror.com/mlly/0.4.3
+      mlly: registry.npmmirror.com/mlly/0.5.1
       pathe: registry.npmmirror.com/pathe/0.2.0
       scule: registry.npmmirror.com/scule/0.2.1
-      unplugin: registry.npmmirror.com/unplugin/0.3.3_83dd4d1a11bf7faa2d41f89ea3fae952
+      unplugin: registry.npmmirror.com/unplugin/0.6.1_eb1617e2d707834de208aef43b9deec1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5724,21 +5752,21 @@ packages:
       - webpack
     dev: true
 
-  registry.npmmirror.com/unimport/0.1.4_esbuild@0.14.36+rollup@2.70.1:
-    resolution: {integrity: sha512-vrqIM/YzAQZR9UDod94pAQmYRFA/3m88KiL/U91pN9m6BVFG0TplxLe6siGn1V3XwQb14UJHqj7hiATjwUwI9A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.4.tgz}
-    id: registry.npmmirror.com/unimport/0.1.4
+  registry.npmmirror.com/unimport/0.1.5_esbuild@0.14.36+rollup@2.70.1:
+    resolution: {integrity: sha512-Wv+CFdDJXkyiHD6yXeHdYMmD5LisII43o6q2ttw1s5mAhwfcBtZPRbZcqPvSkgHX4ZzMPTUIstMhVfC+tHrh6A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unimport/-/unimport-0.1.5.tgz}
+    id: registry.npmmirror.com/unimport/0.1.5
     name: unimport
-    version: 0.1.4
+    version: 0.1.5
     dependencies:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/4.2.0
       escape-string-regexp: registry.npmmirror.com/escape-string-regexp/5.0.0
       globby: registry.npmmirror.com/globby/13.1.1
       local-pkg: registry.npmmirror.com/local-pkg/0.4.1
       magic-string: registry.npmmirror.com/magic-string/0.26.1
-      mlly: registry.npmmirror.com/mlly/0.4.3
+      mlly: registry.npmmirror.com/mlly/0.5.1
       pathe: registry.npmmirror.com/pathe/0.2.0
       scule: registry.npmmirror.com/scule/0.2.1
-      unplugin: registry.npmmirror.com/unplugin/0.3.3_esbuild@0.14.36+rollup@2.70.1
+      unplugin: registry.npmmirror.com/unplugin/0.6.1_esbuild@0.14.36+rollup@2.70.1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5758,79 +5786,6 @@ packages:
     name: unpipe
     version: 1.0.0
     engines: {node: '>= 0.8'}
-    dev: true
-
-  registry.npmmirror.com/unplugin/0.3.3:
-    resolution: {integrity: sha512-WjZWpUqqcYPQ/efR00Zm2m1+J1LitwoZ4uhHV4VdZ+IpW0Nh/qnDYtVf+nLhozXdGxslMPecOshVR7NiWFl4gA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/-/unplugin-0.3.3.tgz}
-    name: unplugin
-    version: 0.3.3
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
-    dev: true
-
-  registry.npmmirror.com/unplugin/0.3.3_83dd4d1a11bf7faa2d41f89ea3fae952:
-    resolution: {integrity: sha512-WjZWpUqqcYPQ/efR00Zm2m1+J1LitwoZ4uhHV4VdZ+IpW0Nh/qnDYtVf+nLhozXdGxslMPecOshVR7NiWFl4gA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/-/unplugin-0.3.3.tgz}
-    id: registry.npmmirror.com/unplugin/0.3.3
-    name: unplugin
-    version: 0.3.3
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      esbuild: registry.npmmirror.com/esbuild/0.14.36
-      rollup: registry.npmmirror.com/rollup/2.70.1
-      vite: registry.npmmirror.com/vite/2.9.1
-      webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
-    dev: true
-
-  registry.npmmirror.com/unplugin/0.3.3_esbuild@0.14.36+rollup@2.70.1:
-    resolution: {integrity: sha512-WjZWpUqqcYPQ/efR00Zm2m1+J1LitwoZ4uhHV4VdZ+IpW0Nh/qnDYtVf+nLhozXdGxslMPecOshVR7NiWFl4gA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/-/unplugin-0.3.3.tgz}
-    id: registry.npmmirror.com/unplugin/0.3.3
-    name: unplugin
-    version: 0.3.3
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      esbuild: registry.npmmirror.com/esbuild/0.14.36
-      rollup: registry.npmmirror.com/rollup/2.70.1
-      webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
     dev: true
 
   registry.npmmirror.com/unplugin/0.6.1:
@@ -5857,7 +5812,7 @@ packages:
       webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
     dev: true
 
-  registry.npmmirror.com/unplugin/0.6.1_83dd4d1a11bf7faa2d41f89ea3fae952:
+  registry.npmmirror.com/unplugin/0.6.1_eb1617e2d707834de208aef43b9deec1:
     resolution: {integrity: sha512-cQqRCgQ2v/Q4fPIWNVZ6sNIDdl5v8JXOnlsUOsGzT4fblTONoPWaytiYSpu5qJ9lvSDZYAQN6BRVo3XQoZMfUQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/-/unplugin-0.6.1.tgz}
     id: registry.npmmirror.com/unplugin/0.6.1
     name: unplugin
@@ -5880,7 +5835,34 @@ packages:
       chokidar: registry.npmmirror.com/chokidar/3.5.3
       esbuild: registry.npmmirror.com/esbuild/0.14.36
       rollup: registry.npmmirror.com/rollup/2.70.1
-      vite: registry.npmmirror.com/vite/2.9.1
+      vite: registry.npmmirror.com/vite/2.9.4
+      webpack-sources: registry.npmmirror.com/webpack-sources/3.2.3
+      webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
+    dev: true
+
+  registry.npmmirror.com/unplugin/0.6.1_esbuild@0.14.36+rollup@2.70.1:
+    resolution: {integrity: sha512-cQqRCgQ2v/Q4fPIWNVZ6sNIDdl5v8JXOnlsUOsGzT4fblTONoPWaytiYSpu5qJ9lvSDZYAQN6BRVo3XQoZMfUQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/-/unplugin-0.6.1.tgz}
+    id: registry.npmmirror.com/unplugin/0.6.1
+    name: unplugin
+    version: 0.6.1
+    peerDependencies:
+      esbuild: '>=0.13'
+      rollup: ^2.50.0
+      vite: ^2.3.0
+      webpack: 4 || 5
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      chokidar: registry.npmmirror.com/chokidar/3.5.3
+      esbuild: registry.npmmirror.com/esbuild/0.14.36
+      rollup: registry.npmmirror.com/rollup/2.70.1
       webpack-sources: registry.npmmirror.com/webpack-sources/3.2.3
       webpack-virtual-modules: registry.npmmirror.com/webpack-virtual-modules/0.4.3
     dev: true
@@ -5953,6 +5935,18 @@ packages:
       which-typed-array: registry.npmmirror.com/which-typed-array/1.1.7
     dev: true
 
+  registry.npmmirror.com/vant/3.4.7:
+    resolution: {integrity: sha512-/iafbNF3VPcDevIun8DMj84V9sGMcBZ2LW8j20uqthW6NpFmkMpDFJxMINQFIZ0myEogqVSDVhS6XFAwlx3nkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vant/-/vant-3.4.7.tgz}
+    name: vant
+    version: 3.4.7
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vant/icons': registry.npmmirror.com/@vant/icons/1.8.0
+      '@vant/popperjs': registry.npmmirror.com/@vant/popperjs/1.1.0
+      '@vant/use': registry.npmmirror.com/@vant/use/1.3.6
+    dev: false
+
   registry.npmmirror.com/vite-node/0.9.3:
     resolution: {integrity: sha512-00jjvwp6pltNxj8QYaNZWo5iEUB+3hvk6YEuA8WrgNzUUDTBQynR/5KJ9xHy/Z9SsyI3rX3AdN64RNUIbuiYKg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-node/-/vite-node-0.9.3.tgz}
     name: vite-node
@@ -5964,17 +5958,17 @@ packages:
       minimist: registry.npmmirror.com/minimist/1.2.6
       mlly: registry.npmmirror.com/mlly/0.5.1
       pathe: registry.npmmirror.com/pathe/0.2.0
-      vite: registry.npmmirror.com/vite/2.9.1
+      vite: registry.npmmirror.com/vite/2.9.4
     transitivePeerDependencies:
       - less
       - sass
       - stylus
     dev: true
 
-  registry.npmmirror.com/vite/2.9.1:
-    resolution: {integrity: sha512-vSlsSdOYGcYEJfkQ/NeLXgnRv5zZfpAsdztkIrs7AZHV8RCMZQkwjo4DS5BnrYTqoWqLoUe1Cah4aVO4oNNqCQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-2.9.1.tgz}
+  registry.npmmirror.com/vite/2.9.4:
+    resolution: {integrity: sha512-7pO6ruZMsyTpaPB7kGtW+yj15Ze5g+E4w4Ramk1sAJLIuI4uPd5sauqubmZNpq0Yc1vLVxoXRf2Uj+qWxk5aXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-2.9.4.tgz}
     name: vite
-    version: 2.9.1
+    version: 2.9.4
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:

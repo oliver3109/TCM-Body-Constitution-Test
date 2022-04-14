@@ -62,8 +62,21 @@
         <ol class="quesitem" id="questionData">
           <template v-for="(item, index) in questionDataList">
             <li v-if="true" :key="item.id" :id="`question_${index}`">
-              <p id="problem">{{ index + 1 }}. {{ item.questionText }}</p>
+              <p
+                id="problem"
+                :style="{
+                  color:
+                    index > 0
+                      ? questionDataList[index - 1].value == 0
+                        ? '#7e7e7e'
+                        : '#242421'
+                      : '#242421',
+                }"
+              >
+                {{ index + 1 }}. {{ item.questionText }}
+              </p>
               <check-btn
+                v-if="index > 0 ? questionDataList[index - 1].value : true"
                 :index="index"
                 v-model:value="questionDataList[index].value"
                 @change="onChange(index)"
@@ -77,28 +90,38 @@
 
     <div class="result" v-else>
       <div class="top">
-        <div>Z式养生</div>
-        <div>养生绝不放松，走上人生巅峰</div>
+        <div class="title">Z式养生</div>
+        <div class="center">养生绝不放松，走上人生巅峰</div>
+
+        <div v-if="share" class="fenxiangtishi" @click="onCloseShare">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAA/ElEQVQ4T62UMUpDQRRFz60lgmBnYSlZhRCwcAWCjY2Qxg1kA9mBrYSIrsDU6dyBYCOkSpGswDRXBv6X8WfeBORPOcwczn13GNHTUk8c+gfZHgDfknY1S9tnwE7SNj/3a2T7HTgGRpI2JZjtS+ANWEu6iEA3wAvwWYI1kAVwBDxKeiiC0qbtW2DehXUgT8C9JIegEgwYAq1JEZLuFVvLzL6ANNwUJ4SEoMZsCkwa/WfgrhunGq2BpHbaOGnro9Zm0agw2CUwi9psrf7MKGonajN6R3mcvcEeguUvewWc19rJYEtJV5HRGDgFprV2bF8DJ5JeD7b2n6+lt2/kB8acehM8SkhBAAAAAElFTkSuQmCC"
+            class="fenxiangtishiimg"
+          />
+          <span class="fenxianghaoyou" style="color: rgb(255, 255, 255)"
+            >分享给好友测一测</span
+          >
+        </div>
       </div>
       <div class="my">
         <div class="label">你的体质</div>
         <div class="tizhi">{{ result.physical }}</div>
       </div>
-      <div class="both">
-        <div>兼有体质</div>
-        <div>{{ result.both }}</div>
+      <div class="both" v-if="result.both.length > 0">
+        <div class="title">兼有体质</div>
+        <div class="value">{{ strFilter(result.both) }}</div>
       </div>
 
-      <div class="tender">
-        <div>倾向体质</div>
-        <div>{{ result.tenden }}</div>
+      <div class="tender" v-if="result.tenden.length > 0">
+        <div class="title">倾向体质</div>
+        <div class="value">{{ strFilter(result.tenden) }}</div>
       </div>
 
       <div id="echart"></div>
 
-      <!-- <div>
+      <!-- <div class="score-result">
         <h5 class="title">得分：</h5>
-        <ol class="scorelist" id="scorelist">
+        <ol class="list-group">
           <li class="list-group-item">平和质：{{ PingheScore }}分</li>
           <li class="list-group-item">气虚质：{{ QiXuScore }}分</li>
           <li class="list-group-item">阳虚质：{{ YangXuScore }}分</li>
@@ -111,23 +134,81 @@
         </ol>
       </div> -->
 
-      <h5 class="title">结果解析：</h5>
-      <ol class="resultlist" id="resultlist">
-        <li v-for="item in result.healthGuide" :key="item.id">
-          <h5 class="totaltitle">{{ item.name }}</h5>
-          <p><strong>常见表现：</strong>{{ item.changjianbiaoxian }}</p>
-          <p><strong>形体特征：</strong>{{ item.xingtitezheng }}</p>
-          <p><strong>精神特征：</strong>{{ item.jingshentezheng }}</p>
-          <p><strong>心理特征：</strong>{{ item.xinlitezheng }}</p>
-          <p><strong>发病倾向：</strong>{{ item.fabingqingxiang }}</p>
-          <p><strong>调养方式：</strong></p>
-          <ul class="tiaoyanglist" id="example">
-            <li v-for="op in item.tiaoyangfangshi" :key="op">
-              {{ op }}
-            </li>
-          </ul>
-        </li>
-      </ol>
+      <div class="health-guide">
+        <van-tabs v-model:active="active" type="card">
+          <van-tab
+            v-for="item in result.healthGuide"
+            :key="item.id"
+            :title="item.name"
+          >
+            <div class="health-guide__content">
+              <div class="row">
+                <label>🟡&nbsp; 常见表现：</label>{{ item.changjianbiaoxian }}
+              </div>
+              <div class="row">
+                <label>🟡&nbsp; 形体特征：</label>{{ item.xingtitezheng }}
+              </div>
+              <div class="row">
+                <label>🟡&nbsp; 精神特征：</label>{{ item.jingshentezheng }}
+              </div>
+              <div class="row">
+                <label>🟡&nbsp; 心理特征：</label>{{ item.xinlitezheng }}
+              </div>
+              <div class="row">
+                <label>🟡&nbsp; 发病倾向：</label>{{ item.fabingqingxiang }}
+              </div>
+              <div class="row"><label>🟡 调养方式：</label></div>
+              <ul class="recuperation-method">
+                <li v-for="op in item.tiaoyangfangshi" :key="op">
+                  ✅&nbsp; {{ op }}
+                </li>
+              </ul>
+            </div>
+          </van-tab>
+        </van-tabs>
+      </div>
+
+      <div class="howto">
+        <span></span>
+        <div class="title">我是{{ result.physical }}，该怎么办？</div>
+        <span></span>
+      </div>
+
+      <div class="drainage">
+        <div class="drainage__header">
+          <div class="title">查看更多养生知识</div>
+          <div class="sub">小红书号：918355632</div>
+        </div>
+        <div class="drainage__content">
+          <div class="left">
+            <p>1. 截图保存二维码，微信扫一扫识别</p>
+            <p>2. 小红书搜索“Z式养生”，关注</p>
+            <p>3. 微信搜索“CoderOliver”，添加好友，拉你进入养生小组</p>
+          </div>
+          <img src="/xiaohongshuhomepage.png" alt="" srcset="" />
+        </div>
+      </div>
+
+      <div class="retest" @click="onRetest">重新测试</div>
+
+      <div class="end">
+        <div class="xiaohongshu">
+          <img
+            src="/xiaohongshu.png"
+            width="60"
+            height="60"
+            style="background: #fff; border-radius: 9px"
+          />
+          <div class="text">X</div>
+          <img
+            src="/logo.png"
+            width="60"
+            height="60"
+            style="border-radius: 5px"
+          />
+        </div>
+        <div class="text">关注小红书学习养生、健康知识</div>
+      </div>
     </div>
   </div>
 </template>
@@ -149,8 +230,10 @@ export default defineComponent({
     SwiperSlide,
     // NButton,
   },
+
   data() {
     return {
+      share: true,
       questionDataList: [],
 
       PingheScore: 0,
@@ -212,6 +295,14 @@ export default defineComponent({
       return _score.toFixed(1);
     },
 
+    onCloseShare() {
+      this.share = false;
+    },
+
+    onRetest() {
+      location.reload();
+    },
+
     onSubmit() {
       const PingheScore = this.calculateScore(1);
       const QiXuScore = this.calculateScore(2);
@@ -222,6 +313,16 @@ export default defineComponent({
       const XueYuScore = this.calculateScore(7);
       const QiYuScore = this.calculateScore(8);
       const TeBingScore = this.calculateScore(9);
+
+      // const PingheScore = 50.0;
+      // const QiXuScore = 25.0;
+      // const YangXuScore = 17.9;
+      // const YingXuScore = 31.3;
+      // const TanShiScore = 25.0;
+      // const ShiReScore = 25.0;
+      // const XueYuScore = 32.1;
+      // const QiYuScore = 32.1;
+      // const TeBingScore = 32.1;
 
       this.PingheScore = PingheScore;
       this.QiXuScore = QiXuScore;
@@ -276,9 +377,6 @@ export default defineComponent({
       const scoreList1 = []; // >= 40分的体质
       const scoreList2 = []; // >= 30 && < 40分的体质
 
-      console.log(scoreList1);
-      console.log(scoreList2);
-
       for (const item of scoreList) {
         if (item.type != 1) {
           if (item.value >= 40) {
@@ -289,6 +387,9 @@ export default defineComponent({
           }
         }
       }
+
+      console.log(scoreList1);
+      console.log(scoreList2);
 
       // 结果
       const result = {
@@ -320,37 +421,55 @@ export default defineComponent({
 
         if (scoreList1.length > 0) {
           const _list = scoreList1.sort((a, b) => {
-            return a.value - b.value;
+            return b.value - a.value;
           });
 
           // 体质(最大值)
           result.physical = TYPE_PHYSIQUE_MAP[_list[0].type];
-          result.healthGuide.push(
-            RESULT_LIST.find((i) => i.type === _list[0].type)
-          );
 
           // 兼有
           result.both = _list
             .filter((_item, index) => index > 0)
             .map((i) => TYPE_PHYSIQUE_MAP[i.type]);
 
+          for (const item of scoreList1) {
+            // 健康指南
+            result.healthGuide.push(
+              RESULT_LIST.find((i) => i.type === item.type)
+            );
+          }
+
           // 倾向
-          result.tenden = scoreList2.map((i) => TYPE_PHYSIQUE_MAP[i.type]);
+          if (scoreList2.length > 0) {
+            result.tenden = scoreList2.map((i) => TYPE_PHYSIQUE_MAP[i.type]);
+            for (const item of scoreList2) {
+              result.healthGuide.push(
+                RESULT_LIST.find((i) => i.type === item.type)
+              );
+            }
+          }
         } else {
           const _list = scoreList2.sort((a, b) => {
-            return a.value - b.value;
+            return b.value - a.value;
           });
 
           // 体质(最大值)
-          result.physical = TYPE_PHYSIQUE_MAP[_list[0].type];
+          result.physical = "倾向" + TYPE_PHYSIQUE_MAP[_list[0].type];
 
-          result.healthGuide.push(
-            RESULT_LIST.find((i) => i.type === _list[0].type)
-          );
+          // 倾向
+          result.tenden = _list
+            .filter((_item, index) => index > 0)
+            .map((i) => TYPE_PHYSIQUE_MAP[i.type]);
+
+          for (const item of scoreList2) {
+            // 健康指南
+            result.healthGuide.push(
+              RESULT_LIST.find((i) => i.type === item.type)
+            );
+          }
         }
       }
 
-      console.log(result);
       this.result = result;
 
       this.initChart();
@@ -368,58 +487,25 @@ export default defineComponent({
         QiYuScore, // 气郁质
         TeBingScore, // 特禀质
       } = this;
-      // QiXuScore = 11;
-      // YangXuScore = 55;
-      // YingXuScore = 33;
-      // TanShiScore = 22;
-      // ShiReScore = 33;
-      // XueYuScore = 34;
-      // QiYuScore = 44;
-      // TeBingScore = 11;
-      const chartDom = document.getElementById("echart");
-      const myChart = echarts.init(chartDom);
 
-      console.log(chartDom);
-      myChart.setOption({
-        xAxis: {
-          type: "category",
-          data: [
-            "气虚",
-            "阳虚",
-            "阴虚",
-            "痰湿",
-            "湿热",
-            "血瘀",
-            "气郁",
-            "特禀",
-          ],
-        },
-        yAxis: {
-          type: "value",
-          show: false,
-        },
-        visualMap: {
-          show: false,
-          pieces: [
-            {
-              gt: 0,
-              lte: 40,
-              color: "#007aff",
-            },
-            {
-              gt: 40,
-              //中间部分颜色显示
-              color: "#ed6858",
-            },
-            {
-              gt: 100, //这儿设置基线上下颜色区分 基线上面为红色
-              color: "#ed6858",
-            },
-          ],
-        },
-        series: [
-          {
-            data: [
+      let xAxisData =
+        PingheScore >= 60
+          ? [
+              "平和",
+              "气虚",
+              "阳虚",
+              "阴虚",
+              "痰湿",
+              "湿热",
+              "血瘀",
+              "气郁",
+              "特禀",
+            ]
+          : ["气虚", "阳虚", "阴虚", "痰湿", "湿热", "血瘀", "气郁", "特禀"];
+      let yAxisData =
+        PingheScore >= 60
+          ? [
+              PingheScore,
               QiXuScore,
               YangXuScore,
               YingXuScore,
@@ -428,35 +514,82 @@ export default defineComponent({
               XueYuScore,
               QiYuScore,
               TeBingScore,
+            ]
+          : [
+              QiXuScore,
+              YangXuScore,
+              YingXuScore,
+              TanShiScore,
+              ShiReScore,
+              XueYuScore,
+              QiYuScore,
+              TeBingScore,
+            ];
+      this.$nextTick(() => {
+        const chartDom = document.getElementById("echart");
+        const myChart = echarts.init(chartDom);
+        myChart.setOption({
+          grid: {
+            top: "3%",
+            left: "3%",
+            right: "9%",
+            bottom: "3%",
+            containLabel: true,
+          },
+          xAxis: {
+            type: "category",
+            data: xAxisData,
+          },
+          yAxis: {
+            type: "value",
+            show: false,
+            max: 100,
+          },
+          visualMap: {
+            show: false,
+            pieces: [
+              {
+                gt: 0,
+                lte: 40,
+                color: "#007aff",
+              },
+              {
+                gt: 40,
+                //中间部分颜色显示
+                color: "#ed6858",
+              },
+              {
+                gt: 100, //这儿设置基线上下颜色区分 基线上面为红色
+                color: "#ed6858",
+              },
             ],
-            type: "bar",
-            markLine: {
-              lineStyle: { type: "solid", width: 1 },
-              data: [{ type: "average", yAxis: 40 }],
-              label: {
-                normal: {
-                  formatter: "判定", // 这儿设置安全基线
+          },
+          series: [
+            {
+              data: yAxisData,
+              type: "bar",
+              showBackground: true,
+              markLine: {
+                lineStyle: { type: "solid", width: 1 },
+                data: [{ type: "average", yAxis: 40 }],
+                label: {
+                  normal: {
+                    formatter: "判定", // 这儿设置安全基线
+                  },
                 },
               },
             },
-          },
-        ],
+          ],
+        });
       });
     },
   },
 
-  setup() {
+  setup(props, self) {
     // 性别
     const gender = ref(null);
     // 题库
     const questionDataList = ref(null);
-
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
 
     const onSelectGender = (value) => {
       gender.value = value;
@@ -469,231 +602,30 @@ export default defineComponent({
     return {
       gender,
       modules: [Pagination, Navigation],
-      onSwiper,
-      onSlideChange,
       onSelectGender,
       questionDataList,
+      strFilter: computed(function () {
+        return function (v: Array<string>) {
+          if (v && v.length > 0) {
+            return v.join("、");
+          }
+          return "";
+        };
+      }),
     };
   },
 });
 </script>
 
 <style lang="css" scoped>
+@import "./index.css";
+@import "./content.css";
+@import "./result.css";
+
 .page {
   max-width: 400px;
   margin: 0 auto;
   position: relative;
   background: #a7d168;
-}
-
-/* 首页 */
-
-.index {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #a7d168 0%, #f5e617 100%);
-}
-
-.index .bg:first-of-type {
-  margin-top: 200px;
-}
-
-.index .title {
-  margin-top: -200px;
-  text-align: center;
-}
-.index .title .main-title {
-  font-size: 30px;
-  font-weight: 500;
-  color: #242421;
-}
-.index .title .sub-title {
-  margin-top: 5px;
-  font-size: 16px;
-  color: #7e7e7e;
-}
-
-.index .sex-box {
-  margin-top: 70px;
-}
-
-.index .sex-box .sex-box__title {
-  font-size: 18px;
-  text-align: left;
-  margin-bottom: 15px;
-}
-
-.index .sex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.index .sex .btn:first-of-type {
-  margin-right: 20px;
-}
-.index .sex .btn {
-  height: 40px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #32373a;
-  font-size: 16px;
-  border-radius: 8px;
-  background-color: #f5e617;
-  border: 2px solid #32373a;
-}
-
-.index .sex .btn.male {
-  /* background-color: #00a6ff; */
-}
-
-.index .sex .btn.female {
-  /* background-color: #ff64bc; */
-}
-
-.xiaohongshu {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20px;
-  height: 60px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.xiaohongshu .text {
-  font-size: 14px;
-  color: #242421;
-  height: 24px;
-  line-height: 24px;
-  border-radius: 6px;
-  margin: 0 8px;
-  font-weight: 500;
-}
-
-/* page */
-
-.content {
-  background: #a7d168;
-  position: relative;
-  overflow-y: scroll;
-}
-
-.content .top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #a7d168;
-}
-
-.content .top-title {
-  height: 60px;
-  text-align: left;
-  padding-left: 15px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-}
-.content .top-title__main-title {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: #242421;
-}
-.content .right {
-  margin-left: 10px;
-}
-.content .top-title__main-title__text {
-  font-size: 20px;
-}
-.content .top-title__sub-title {
-  font-size: 14px;
-  color: #32373a;
-}
-
-.content .info {
-  padding-left: 15px;
-  height: 30px;
-  font-size: 16px;
-  color: #32373a;
-}
-
-.content .quesitem {
-  padding: 0 15px;
-  margin-top: 90px;
-  /* position: fixed; */
-  top: 90px;
-  bottom: 0;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 90px);
-}
-.content .quesitem #problem {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.content .quesitem li {
-  margin-bottom: calc(100vh / 50);
-}
-.content .quesitem li .radio-inline {
-  margin-right: 5px;
-  font-size: 15px;
-}
-.content .quesitem li .radio-inline input {
-  margin-right: 5px;
-}
-
-.submit-btn {
-  width: 140px;
-  height: 35px;
-  background-color: #f5e617;
-  border: 2px solid #32373a;
-  border-radius: 8px;
-  line-height: 35px;
-  text-align: center;
-  margin: 20px auto 0;
-  border-radius: 12px;
-  color: #32373a;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 30px;
-}
-
-/* 结果页面 */
-.result {
-  min-height: 100vh;
-}
-
-.result .my {
-  text-align: center;
-}
-
-.result .my .label {
-  font-size: 14px;
-}
-
-.result .my .tizhi {
-  margin-top: 10px;
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 15px;
-}
-
-.result #echart {
-  height: 300px;
-  width: 100%;
 }
 </style>

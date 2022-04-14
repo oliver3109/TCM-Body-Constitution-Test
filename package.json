@@ -16,6 +16,7 @@
   "dependencies": {
     "echarts": "^5.3.2",
     "swiper": "^8.1.0",
+    "vant": "^3.4.7",
     "vue-awesome-swiper": "^5.0.1"
   }
 }

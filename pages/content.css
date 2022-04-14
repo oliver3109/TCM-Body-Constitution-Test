@@ -1,0 +1,91 @@
+.content {
+  background: #a7d168;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.content .top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #a7d168;
+}
+
+.content .top-title {
+  height: 60px;
+  text-align: left;
+  padding-left: 15px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.content .top-title__main-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #242421;
+}
+.content .right {
+  margin-left: 10px;
+}
+.content .top-title__main-title__text {
+  font-size: 20px;
+}
+.content .top-title__sub-title {
+  font-size: 14px;
+  color: #32373a;
+}
+
+.content .info {
+  padding-left: 15px;
+  height: 30px;
+  font-size: 16px;
+  color: #32373a;
+}
+
+.content .quesitem {
+  padding: 0 15px;
+  margin-top: 90px;
+  /* position: fixed; */
+  top: 90px;
+  bottom: 0;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 90px);
+}
+.content .quesitem #problem {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.content .quesitem li {
+  margin-bottom: calc(100vh / 50);
+}
+.content .quesitem li .radio-inline {
+  margin-right: 5px;
+  font-size: 15px;
+}
+.content .quesitem li .radio-inline input {
+  margin-right: 5px;
+}
+
+.content .submit-btn {
+  width: 140px;
+  height: 35px;
+  background-color: #f5e617;
+  border: 2px solid #32373a;
+  border-radius: 8px;
+  line-height: 35px;
+  text-align: center;
+  margin: 20px auto 0;
+  border-radius: 12px;
+  color: #32373a;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,77 @@
+/* 首页 */
+
+.index {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #a7d168 0%, #f5e617 100%);
+}
+
+.index .bg:first-of-type {
+  margin-top: 200px;
+}
+
+.index .title {
+  margin-top: -200px;
+  text-align: center;
+}
+.index .title .main-title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #242421;
+}
+.index .title .sub-title {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #7e7e7e;
+}
+.index .sex-box {
+  margin-top: 70px;
+}
+.index .sex-box .sex-box__title {
+  font-size: 18px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+.index .sex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.index .sex .btn:first-of-type {
+  margin-right: 20px;
+}
+.index .sex .btn {
+  height: 40px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #32373a;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #f5e617;
+  border: 2px solid #32373a;
+}
+.index .xiaohongshu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  height: 60px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.index .xiaohongshu .text {
+  font-size: 14px;
+  color: #242421;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 6px;
+  margin: 0 8px;
+  font-weight: 500;
+}
