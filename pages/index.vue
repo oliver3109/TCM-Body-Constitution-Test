@@ -11,11 +11,19 @@
           <div class="sex-box__title">请选择您的性别：</div>
           <div class="sex">
             <div class="btn male" @click="onSelectGender(0)">
-              <img src="/male.svg" alt="" srcset="" />
+              <img
+                src="https://olivergzzy.github.io/TCM-Body-Constitution-Test/male.svg"
+                alt=""
+                srcset=""
+              />
               <div>男</div>
             </div>
             <div class="btn female" @click="onSelectGender(1)">
-              <img src="/female.svg" alt="" srcset="" />
+              <img
+                src="https://olivergzzy.github.io/TCM-Body-Constitution-Test/female.svg"
+                alt=""
+                srcset=""
+              />
               <div>女</div>
             </div>
           </div>
