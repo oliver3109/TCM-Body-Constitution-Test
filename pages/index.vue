@@ -23,14 +23,14 @@
         <!-- 底部 -->
         <div class="xiaohongshu">
           <img
-            src="/xiaohongshu.png"
+            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshu.png"
             width="40"
             height="40"
             style="background: #fff; border-radius: 5px"
           />
           <div class="text">X</div>
           <img
-            src="/logo.png"
+            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
             width="40"
             height="40"
             style="border-radius: 5px"
@@ -43,7 +43,7 @@
           <div class="top-title">
             <div class="top-title__main-title">
               <img
-                src="/logo.png"
+                src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
                 width="50"
                 height="50"
                 style="border-radius: 5px"
@@ -185,7 +185,11 @@
             <p>2. 小红书搜索“Z式养生”，关注</p>
             <p>3. 微信搜索“CoderOliver”，添加好友，拉你进入养生小组</p>
           </div>
-          <img src="/xiaohongshuhomepage.png" alt="" srcset="" />
+          <img
+            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshuhomepage.png"
+            alt=""
+            srcset=""
+          />
         </div>
       </div>
 
@@ -194,14 +198,14 @@
       <div class="end">
         <div class="xiaohongshu">
           <img
-            src="/xiaohongshu.png"
+            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshu.png"
             width="60"
             height="60"
             style="background: #fff; border-radius: 9px"
           />
           <div class="text">X</div>
           <img
-            src="/logo.png"
+            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
             width="60"
             height="60"
             style="border-radius: 5px"
