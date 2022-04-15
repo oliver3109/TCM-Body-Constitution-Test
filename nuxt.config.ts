@@ -4,6 +4,7 @@ const IS_PRO = process.env.DEPLOY_ENV === "GH_PAGES";
 
 const app = IS_PRO
   ? {
+      // baseURL: "/TCM-Body-Constitution-Test/",
       cdnURL:
         "https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/",
     }
@@ -22,7 +23,7 @@ export default defineNuxtConfig({
   generate: {
     nojekyll: true,
   },
-  ...router,
+  router,
   app,
   meta: {
     charset: "utf-8",
