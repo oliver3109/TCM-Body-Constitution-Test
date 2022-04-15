@@ -30,7 +30,7 @@ export default defineNuxtConfig({
       "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
     script: [
       {
-        src: "/_nuxt/flexible.js",
+        src: "https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/_nuxt/flexible.js",
         type: "text/javascript",
       },
     ],

@@ -54,6 +54,7 @@
   border-radius: 8px;
   background-color: #f5e617;
   border: 2px solid #32373a;
+  cursor: pointer;
 }
 .index .xiaohongshu {
   position: absolute;
