@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     nojekyll: true,
   },
   ...router,
-  ...app,
+  app,
   meta: {
     charset: "utf-8",
     viewport:
