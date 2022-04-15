@@ -1,23 +1,29 @@
 import { defineNuxtConfig } from "nuxt3";
 
-const routerBase =
-  process.env.DEPLOY_ENV === "GH_PAGES"
-    ? {
-        router: {
-          base: "/TCM-Body-Constitution-Test/",
-        },
-      }
-    : {};
+const IS_PRO = process.env.DEPLOY_ENV === "GH_PAGES";
+
+const app = IS_PRO
+  ? {
+      cdnURL:
+        "https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/",
+    }
+  : {};
+
+const router = IS_PRO
+  ? {
+      base: "/TCM-Body-Constitution-Test/",
+    }
+  : {};
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   target: "static",
-  ...routerBase,
-  app: {
-    cdnURL:
-      "https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/",
+  generate: {
+    nojekyll: true,
   },
+  ...router,
+  ...app,
   meta: {
     charset: "utf-8",
     viewport:
