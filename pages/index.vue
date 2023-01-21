@@ -3,7 +3,7 @@
     <div v-if="result.physical == ''">
       <div class="index" v-if="gender == null">
         <div class="title">
-          <div class="main-title">Z式养生·中医体质自测</div>
+          <div class="main-title">中医体质自测</div>
           <div class="sub-title">本测试来自《中医体质分类与判定》国家标准</div>
         </div>
 
@@ -12,7 +12,7 @@
           <div class="sex">
             <div class="btn male" @click="onSelectGender(0)">
               <img
-                src="https://olivergzzy.github.io/TCM-Body-Constitution-Test/male.svg"
+                src="https://chihyungchang.github.io/TCM-Body-Constitution-Test/male.svg"
                 alt=""
                 srcset=""
               />
@@ -20,29 +20,13 @@
             </div>
             <div class="btn female" @click="onSelectGender(1)">
               <img
-                src="https://olivergzzy.github.io/TCM-Body-Constitution-Test/female.svg"
+                src="https://chihyungchang.github.io/TCM-Body-Constitution-Test/female.svg"
                 alt=""
                 srcset=""
               />
               <div>女</div>
             </div>
           </div>
-        </div>
-        <!-- 底部 -->
-        <div class="xiaohongshu">
-          <img
-            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshu.png"
-            width="40"
-            height="40"
-            style="background: #fff; border-radius: 5px"
-          />
-          <div class="text">X</div>
-          <img
-            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
-            width="40"
-            height="40"
-            style="border-radius: 5px"
-          />
         </div>
       </div>
 
@@ -51,7 +35,7 @@
           <div class="top-title">
             <div class="top-title__main-title">
               <img
-                src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
+                src="https://cdn.jsdelivr.net/gh/chihyungchang/TCM-Body-Constitution-Test@gh-pages/logo.png"
                 width="50"
                 height="50"
                 style="border-radius: 5px"
@@ -98,7 +82,6 @@
 
     <div class="result" v-else>
       <div class="top" id="resultTop">
-        <div class="title">Z式养生</div>
         <div class="center">养生绝不放松，走上人生巅峰</div>
 
         <div v-if="share" class="fenxiangtishi" @click="onCloseShare">
@@ -182,45 +165,7 @@
         <span></span>
       </div>
 
-      <div class="drainage">
-        <div class="drainage__header">
-          <div class="title">查看更多养生知识</div>
-          <div class="sub">小红书号：918355632</div>
-        </div>
-        <div class="drainage__content">
-          <div class="left">
-            <p>1. 截图保存二维码，微信扫一扫识别</p>
-            <p>2. 小红书搜索“Z式养生”，关注</p>
-            <p>3. 微信搜索“CoderOliver”，添加好友，拉你进入养生小组</p>
-          </div>
-          <img
-            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshuhomepage.png"
-            alt=""
-            srcset=""
-          />
-        </div>
-      </div>
-
       <div class="retest" @click="onRetest">重新测试</div>
-
-      <div class="end">
-        <div class="xiaohongshu">
-          <img
-            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/xiaohongshu.png"
-            width="60"
-            height="60"
-            style="background: #fff; border-radius: 9px"
-          />
-          <div class="text">X</div>
-          <img
-            src="https://cdn.jsdelivr.net/gh/OLIVERgZzy/TCM-Body-Constitution-Test@gh-pages/logo.png"
-            width="60"
-            height="60"
-            style="border-radius: 5px"
-          />
-        </div>
-        <div class="text">关注“Z式养生”学习养生、健康知识</div>
-      </div>
     </div>
   </div>
 </template>

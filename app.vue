@@ -7,7 +7,7 @@
 <script lang="ts">
 export default defineComponent({
   mounted() {
-    document.title = "Z式养生·中医体质自测";
+    document.title = "中医体质自测";
   },
 });
 </script>

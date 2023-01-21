@@ -1,6 +1,8 @@
 /* 结果页面 */
 .result {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .result .top {
@@ -9,11 +11,6 @@
   position: relative;
   height: 20px;
   line-height: 20px;
-}
-
-.result .top .title {
-  font-size: 12px;
-  font-weight: 500;
 }
 
 .result .top .center {
@@ -214,8 +211,9 @@
 }
 
 .result .retest {
-  margin-left: 16px;
+  align-self: center;
   margin-top: 20px;
+  margin-bottom: 40px;
   background-color: #f5e617;
   border: 2px solid #242421;
   color: #242421;
