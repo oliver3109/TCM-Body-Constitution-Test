@@ -2,12 +2,14 @@ sudo: false
 language: node_js
 node_js:
   - 16
-cache: npm
+cache:
+  npm: false
 branches:
   only:
     - main
 script:
-  - npm run generate:gh-pages
+  - pnpm i
+  - pnpm run generate:gh-pages
 deploy:
   provider: pages
   skip-cleanup: true
