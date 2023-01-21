@@ -1,21 +1,21 @@
 {
-  "node_modules/nuxt3/dist/app/entry.mjs": {
-    "file": "entry-6cf0339c.mjs",
-    "src": "node_modules/nuxt3/dist/app/entry.mjs",
+  "node_modules/.pnpm/registry.npmmirror.com+nuxt3@3.0.0-27497942.c519cee/node_modules/nuxt3/dist/app/entry.mjs": {
+    "file": "entry-4ce55f9b.mjs",
+    "src": "node_modules/.pnpm/registry.npmmirror.com+nuxt3@3.0.0-27497942.c519cee/node_modules/nuxt3/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
       "pages/index.vue"
     ],
     "css": [
-      "entry.03b0bd49.css"
+      "entry.05755837.css"
     ]
   },
   "pages/index.vue": {
-    "file": "index-c2e07ace.mjs",
+    "file": "index-81dc64ca.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "node_modules/nuxt3/dist/app/entry.mjs"
+      "node_modules/.pnpm/registry.npmmirror.com+nuxt3@3.0.0-27497942.c519cee/node_modules/nuxt3/dist/app/entry.mjs"
     ]
   }
 }
