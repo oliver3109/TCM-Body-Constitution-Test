@@ -1,17 +1,10 @@
-import { defineNuxtConfig } from "nuxt3";
-
 const IS_PRO = process.env.DEPLOY_ENV === "GH_PAGES";
 
 const app = IS_PRO
   ? {
+      baseURL: "/TCM-Body-Constitution-Test/",
       cdnURL:
         "https://cdn.jsdelivr.net/gh/chihyungchang/TCM-Body-Constitution-Test@gh-pages/",
-    }
-  : {};
-
-const router = IS_PRO
-  ? {
-      base: "/TCM-Body-Constitution-Test/",
     }
   : {};
 
@@ -19,10 +12,7 @@ const router = IS_PRO
 export default defineNuxtConfig({
   ssr: false,
   target: "static",
-  generate: {
-    nojekyll: true,
-  },
-  router,
+  router: {},
   app,
   meta: {
     title: "中医体质自测",
