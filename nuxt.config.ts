@@ -1,19 +1,13 @@
-const IS_PRO = process.env.DEPLOY_ENV === "GH_PAGES";
-
-const app = IS_PRO
-  ? {
-      baseURL: "/TCM-Body-Constitution-Test/",
-      cdnURL:
-        "https://cdn.jsdelivr.net/gh/chihyungchang/TCM-Body-Constitution-Test@gh-pages/",
-    }
-  : {};
-
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   ssr: false,
   target: "static",
   router: {},
-  app,
+  app: {
+    baseURL: "/TCM-Body-Constitution-Test/",
+    cdnURL:
+      "https://cdn.jsdelivr.net/gh/chihyungchang/TCM-Body-Constitution-Test@gh-pages/",
+  },
   meta: {
     title: "中医体质自测",
     link: [
